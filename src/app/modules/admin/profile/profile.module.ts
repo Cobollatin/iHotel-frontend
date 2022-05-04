@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { ProfileComponent } from 'app/modules/admin/profile/profile.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 const exampleRoutes: Route[] = [
     {
@@ -13,8 +14,9 @@ const exampleRoutes: Route[] = [
     declarations: [
         ProfileComponent
     ],
-    imports     : [
-        RouterModule.forChild(exampleRoutes)
+    imports: [
+        RouterModule.forChild(exampleRoutes),
+        MatGridListModule
     ]
 })
 export class ProfileModule

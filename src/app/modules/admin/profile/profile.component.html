@@ -4,8 +4,28 @@
     <div class="flex-auto p-6 sm:p-10">
 
         <!-- CONTENT GOES HERE -->
-        <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl">
-           <h1>Profile Works!</h1>
+        <div class="h-150 min-h-150 max-h-150 border-2 border-dashed border-gray-300 rounded-2xl">
+            <mat-grid-list cols="2" rowHeight="10rem">
+                <mat-grid-tile [colspan]="1" [rowspan]="3">
+                    <div>
+                        <h1 class="mt-4 text-3xl font-extrabold leading-7 tracking-tight truncat md:text-4xl ">My Account</h1>
+                        <h2 class="mt-4 text-2xl font-semibold leading-tight ">My Data</h2>
+                        <h3 class="mt-4"><strong> Name: </strong> User</h3>
+                        <h3><strong> Last Name: </strong> 01</h3>
+                        <h3><strong> Email: </strong> user01@easyhotel.com</h3>
+                        <h3><strong> Number: </strong> +51942465835</h3>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="3">
+                    <figure>
+                        <img src="../../../../assets/images/avatars/user.PNG"  alt="profile-photo">
+                    </figure>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+
         </div>
 
     </div>
