@@ -5,6 +5,8 @@ import {SearchModule} from "../../../layout/common/search/search.module";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatCardModule} from "@angular/material/card";
 
 const exampleRoutes: Route[] = [
     {
@@ -22,7 +24,9 @@ const exampleRoutes: Route[] = [
         SearchModule,
         MatGridListModule,
         MatIconModule,
-        MatButtonModule
+        MatButtonModule,
+        MatDatepickerModule,
+        MatCardModule
     ]
 })
 export class HomeModule

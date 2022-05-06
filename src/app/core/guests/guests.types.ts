@@ -1,4 +1,4 @@
-export interface User
+export interface Guest
 {
     id: string;
     name: string;
@@ -6,5 +6,7 @@ export interface User
     email: string;
     avatar?: string;
     status?: string;
-    number?:string;
+    phonenumber?:string;
+    dayToStay?:string;
+    totalToPay?:string;
 }
