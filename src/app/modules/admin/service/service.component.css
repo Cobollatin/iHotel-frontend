@@ -1,0 +1,42 @@
+#add-button{
+    background: #009D76;
+    color: #FFFFFF;
+    height: 70px;
+}
+#service-section{
+    display: flex;
+    flex-direction: column;
+}
+.mat-card{
+    width: 800px;
+}
+.mat-card h1
+{
+    font-size: 40px;
+    font-weight: 700;
+}
+.mat-card h2
+{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.mat-card h3
+{
+    margin-top: 20px;
+}
+.mat-list-item p
+{
+    width: 800px;
+    font-size: 15px;
+    margin-bottom: 10px ;
+}
+#delete-btn {
+    background: #D82C0D;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+#modify-btn{
+    background: #2E72D2;
+    color: #FFFFFF;
+}

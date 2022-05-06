@@ -1,0 +1,16 @@
+<div id="service-section">
+    <button id="add-button" mat-raised-button class="ml-30 mt-10">Register Service</button>
+    <mat-card class="ml-30 mt-10" *ngFor="let consumption of consumptions">
+        <h1>{{  customers[(consumption.customer)].name }}</h1>
+        <h2>Consumption</h2>
+        <mat-list>
+            <mat-list-item *ngFor="let serv of consumption.service">
+                <p>{{ "■ " + services[serv].name }}</p>
+                <button mat-flat-button id="delete-btn">Delete</button>
+                <button mat-flat-button id="modify-btn">Modify</button>
+            </mat-list-item>
+        </mat-list>
+        <h3>Total to pay: 500 soles</h3>
+    </mat-card>
+</div>
+

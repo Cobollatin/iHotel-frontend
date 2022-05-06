@@ -28,6 +28,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:archive',
         link : '/consumption'
+    },
+    {
+        id   : 'service',
+        title: 'Service',
+        type : 'basic',
+        icon : 'heroicons_outline:chip',
+        link : '/service'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
