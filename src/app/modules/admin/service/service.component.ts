@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface Customers{
     id: number;
@@ -23,6 +24,7 @@ export interface Services{
 
 export class ServiceComponent
 {
+    addCustomer: string = '';
     customerName: string;
     customers: Array<Customers> = [
         {
@@ -69,9 +71,21 @@ export class ServiceComponent
             name: 'Almuerzo y desayuno'
         }
     ];
-    getCustomerName(consumption: Consumptions): any{
-        this.customerName = this.customers[consumption.customer].name;
-}
+    numberCustomers: number = this.customers.length - 1;
+    numberConsumption: number = this.consumptions.length - 1;
+    addCustomerName(): any {
+        console.log(this.addCustomer);
+        this.numberConsumption++;
+        this.numberCustomers ++;
+        this.customers.push({id: this.numberCustomers,name: this.addCustomer});
+        this.consumptions.push({
+            id: this.numberConsumption,
+            customer: this.numberCustomers,
+            service: null,
+        });
+        this.addCustomer = '';
+        console.log(this.customers);
+    }
 }
 
 
