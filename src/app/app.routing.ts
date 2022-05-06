@@ -75,7 +75,8 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'home', loadChildren: () => import('app/modules/admin/home/home.module').then(m => m.HomeModule)},
-            {path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule)}
+            {path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule)},
+            {path: 'service', loadChildren: () => import('app/modules/admin/service/service.module').then(m => m.ServiceModule)}
         ]
     }
 ];
