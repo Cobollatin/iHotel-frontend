@@ -10,16 +10,16 @@
                     <div>
                         <h1 class="mt-4 text-3xl font-extrabold leading-7 tracking-tight truncat md:text-4xl ">My Account</h1>
                         <h2 class="mt-4 text-2xl font-semibold leading-tight ">My Data</h2>
-                        <h3 class="mt-4"><strong> Name: </strong> User</h3>
-                        <h3><strong> Last Name: </strong> 01</h3>
-                        <h3><strong> Email: </strong> user01@easyhotel.com</h3>
-                        <h3><strong> Number: </strong> +51942465835</h3>
+                        <h3 class="mt-4"><strong> Name: </strong>{{user.name}}</h3>
+                        <h3><strong> Last Name: </strong> {{user.lastName}}</h3>
+                        <h3><strong> Email: </strong> {{user.email}}</h3>
+                        <h3><strong> Number: </strong> {{user.number}}</h3>
                     </div>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="3">
                     <figure>
-                        <img src="../../../../assets/images/avatars/user.PNG"  alt="profile-photo">
+                        <img style="min-width:15rem;" [src]="user.avatar" alt="profile-photo">
                     </figure>
                 </mat-grid-tile>
 

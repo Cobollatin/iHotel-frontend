@@ -14,6 +14,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 
+
 const exampleRoutes: Route[] = [
     {
         path     : '',
@@ -38,6 +39,7 @@ const exampleRoutes: Route[] = [
         MatInputModule,
         MatNativeDateModule,
         MatMomentDateModule
+
     ]
 })
 export class HomeModule
