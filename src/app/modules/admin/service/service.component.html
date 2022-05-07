@@ -1,22 +1,24 @@
 <div id="service-section">
-    <h2 id="title-add">Add a new service</h2>
-    <mat-form-field class="accent-black" appearance="outline">
-        <mat-label>Customer's name</mat-label>
-        <input matInput placeholder="Customer's name" [(ngModel)]="addCustomer">
-    </mat-form-field>
-    <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addCustomerName()">Register Service</button>
-    <mat-card class="ml-30 mt-10" *ngFor="let consumption of consumptions">
-        <h1>{{  customers[(consumption.customer)].name }}</h1>
-        <h2>Consumption</h2>
+    <ng-container>
+        <h2 id="title-add">Add Service</h2>
+        <mat-form-field class="accent-black" appearance="outline">
+            <mat-label>Service's name</mat-label>
+            <input matInput placeholder="Service's name" [(ngModel)]="addService">
+        </mat-form-field>
+        <mat-form-field class="accent-black" appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" [(ngModel)]="addPrice">
+        </mat-form-field>
+
+        <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addServiceName()">Register Service</button>
+    </ng-container>
+    <mat-card class="ml-30 mt-10" *ngFor="let service of services">
+        <h3>{{  services[(service.id)].name }}</h3>
         <mat-list>
-            <mat-list-item *ngFor="let serv of consumption.service">
-                <p>{{ "■ " + services[serv].name }}</p>
-                <button mat-flat-button id="delete-btn">Delete</button>
-                <button mat-flat-button id="modify-btn">Modify</button>
-            </mat-list-item>
+            <p>{{ "Price: " + service.price }}</p>
         </mat-list>
-        <h3>Total to pay: 500 soles</h3>
+        <button id="add-button-service" mat-raised-button class="ml-40 mt-10">Update Service</button>
+        <button id="delete-button-service" mat-raised-button class="ml-30 mt-10">Delete Service</button>
     </mat-card>
-    <!--    Dialog-->
 </div>
 
