@@ -23,6 +23,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/guests'
     },
     {
+        id   : 'service',
+        title: 'Service',
+        type : 'basic',
+        icon : 'heroicons_outline:chip',
+        link : '/service'
+    },
+    {
         id   : 'consumption',
         title: 'Consumption',
         type : 'basic',

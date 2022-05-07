@@ -1,0 +1,37 @@
+<div id="consumption-section">
+    <ng-container *ngIf="addServiceDrawer">
+        <h2 id="title-add">Add service a {{customerName}}</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Service</mat-label>
+            <mat-select [(ngModel)]="selectedService" name="food">
+                <mat-option *ngFor="let service of services" [value]="service.name">
+                    {{service.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addCustomerService()">Register Service</button>
+        <button id="cancel-button" mat-raised-button class="ml-30 mt-2" (click)="cancelCustomerService()">Cancel</button>
+    </ng-container>
+    <ng-container  *ngIf="addCustomerDrawer">
+        <h2 id="title-add">Add Customer</h2>
+        <mat-form-field class="accent-black" appearance="outline">
+            <mat-label>Customer's name</mat-label>
+            <input matInput placeholder="Customer's name" [(ngModel)]="addCustomer">
+        </mat-form-field>
+        <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addCustomerName()">Register Service</button>
+    </ng-container>
+    <mat-card  class="ml-30 mt-10" *ngFor="let consumption of consumptions">
+        <h1>{{  customers[(consumption.customer)].name }}</h1>
+        <h2>Consumption</h2>
+        <mat-list>
+            <mat-list-item *ngFor="let serv of consumption.service">
+                <p>{{ "■ " + services[serv].name }}</p>
+                <button mat-flat-button id="delete-btn">Delete</button>
+                <button mat-flat-button id="modify-btn">Modify</button>
+            </mat-list-item>
+        </mat-list>
+        <h3 class="inline-block" id="h3-mat-card-consumption">Total to pay: 500 soles</h3>
+        <button id="add-button-consumption" mat-raised-button class="ml-30 mt-2" (click)="addService(consumption)">Add Service</button>
+    </mat-card>
+    <!--    Dialog-->
+</div>
