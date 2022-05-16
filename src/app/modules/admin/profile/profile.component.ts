@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import {User} from "../../../core/user/user.types";
-import {UserService} from "../../../core/user/user.service";
-import {Subject, takeUntil} from "rxjs";
+import {User} from '../../../core/user/user.types';
+import {UserService} from '../../../core/user/user.service';
+import {Subject, takeUntil} from 'rxjs';
 
 @Component({
     selector     : 'profile',
@@ -21,7 +21,7 @@ export class ProfileComponent
 
     }
 
-    ngOnInit():void{
+    ngOnInit(): void{
         // Subscribe to the user service
         this._userService.user$
             .pipe((takeUntil(this._unsubscribeAll)))

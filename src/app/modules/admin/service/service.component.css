@@ -1,33 +1,24 @@
-#add-button{
+#title-add-service{
+    margin-top: 10px;
+    font-size: 30px;
+    margin-left: 120px;
+    font-weight: 700;
+}
+#add-button-service{
     background: #009D76;
     color: #FFFFFF;
     height: 70px;
 }
-#service-section{
-    display: flex;
-    flex-direction: column;
-}
-.mat-card{
-    width: 800px;
-}
-.mat-card h3
+#mat-card-service h3
 {
     font-size: 30px;
     font-weight: 700;
 }
-.mat-card p{
-    font-size: 20px;
+#mat-card-service p{
+    font-size: 18px;
 }
-#title-add{
-    margin-top: 10px;
-    font-size: 30px;
-    margin-left: 120px;
-}
-.mat-form-field{
-    margin-left: 120px;
-    color: #000000;
-}
-#add-button-service{
+
+#update-button-service{
     background: #009D76;
     color: #FFFFFF;
     height: 70px;

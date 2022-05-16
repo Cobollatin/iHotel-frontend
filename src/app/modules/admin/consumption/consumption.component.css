@@ -1,63 +1,45 @@
-#add-button{
+#add-consumption-button{
     background: #009D76;
     color: #FFFFFF;
-    height: 70px;
+    height: 90px;
 }
-#consumption-section{
-    display: flex;
-    flex-direction: column;
+#cancel-consumption-button{
+    background: #D82C0D;
+    color: #FFFFFF;
+    height: 90px;
 }
-.mat-card{
-    width: 800px;
-}
-.mat-card h1
-{
+#card-consumption h1 {
 font-size: 40px;
 font-weight: 700;
 }
-.mat-card h2
-{
+#card-consumption h2 {
 font-size: 30px;
 font-weight: 500;
 margin-bottom: 20px;
 }
-#h3-mat-card-consumption
-{
-    font-size: 15px;
-    margin-top: 20px;
-}
-.mat-list-item p
-{
+.list-item-consumption p {
 width: 800px;
 font-size: 15px;
 margin-bottom: 10px ;
 }
-#delete-btn {
+#delete-consumption-button {
     background: #D82C0D;
     color: #FFFFFF;
     margin-right: 10px;
 }
-#modify-btn{
+#modify-consumption-button {
     background: #2E72D2;
     color: #FFFFFF;
 }
-#title-add{
+#title-add-consumption {
     margin-top: 10px;
     font-size: 30px;
     margin-left: 120px;
-}
-.mat-form-field{
-    margin-left: 120px;
-    color: #000000;
+    font-weight: 700;
 }
 #add-button-consumption{
     background: #009D76;
     color: #FFFFFF;
     height: 70px;
     margin-left: 481px !important;
-}
-#cancel-button{
-    background: #D82C0D;
-    color: #FFFFFF;
-    height: 70px;
 }

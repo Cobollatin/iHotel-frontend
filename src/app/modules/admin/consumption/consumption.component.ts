@@ -1,18 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import {Consumptions, Customers, Services} from '../components.model';
 
-export interface Customers{
-    id: number;
-    name: string;
-}
-export interface Consumptions{
-    id: number;
-    customer: number;
-    service: Array<number>;
-}
-export interface Services{
-    id: number;
-    name: string;
-}
+
 
 @Component({
     selector     : 'consumption',
