@@ -75,10 +75,15 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'home', loadChildren: () => import('app/modules/admin/home/home.module').then(m => m.HomeModule)},
-            {path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule)},
-            {path: 'guests', loadChildren: () => import('app/modules/admin/guests/guests.module').then(m => m.GuestsModule)},
+            {path: 'hotel', loadChildren: () => import('app/modules/admin/hotel/hotel.module').then(m => m.HotelModule)},
+            {path: 'guest', loadChildren: () => import('app/modules/admin/guests/guests.module').then(m => m.GuestsModule)},
+            {path: 'consumption', loadChildren: () => import('app/modules/admin/consumption/consumption.module').then(m => m.ConsumptionModule)},
             {path: 'service', loadChildren: () => import('app/modules/admin/service/service.module').then(m => m.ServiceModule)},
-            {path: 'consumption', loadChildren: () => import('app/modules/admin/consumption/consumption.module').then(m => m.ConsumptionModule)}
+            {path: 'employee', loadChildren: () => import('app/modules/admin/employee/employee.module').then(m => m.EmployeeModule)},
+            {path: 'product', loadChildren: () => import('app/modules/admin/product/product.module').then(m => m.ProductModule)},
+            {path: 'bill', loadChildren: () => import('app/modules/admin/bill/bill.module').then(m => m.BillModule)},
+            {path: 'doc', loadChildren: () => import('app/modules/admin/doc/doc.module').then(m => m.DocModule)},
+            {path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule)},
 
         ]
     }
