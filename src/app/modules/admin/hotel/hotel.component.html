@@ -1,0 +1,40 @@
+<div>
+<!--    <ng-container *ngIf="addServiceDrawer">-->
+<!--        <h2 id="title-add">Add service a {{customerName}}</h2>-->
+<!--        <mat-form-field appearance="outline">-->
+<!--            <mat-label>Service</mat-label>-->
+<!--            <mat-select [(ngModel)]="selectedService" name="food">-->
+<!--                <mat-option *ngFor="let service of services" [value]="service.name">-->
+<!--                    {{service.name}}-->
+<!--                </mat-option>-->
+<!--            </mat-select>-->
+<!--        </mat-form-field>-->
+<!--        <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addCustomerService()">Register Service</button>-->
+<!--        <button id="cancel-button" mat-raised-button class="ml-30 mt-2" (click)="cancelCustomerService()">Cancel</button>-->
+<!--    </ng-container>-->
+    <ng-container  *ngIf="modifyHotelDrawer">
+        <h2 id="title-add-hotel" class="mt-10">Add Hotel</h2>
+        <mat-form-field class="ml-28 mt-5" appearance="outline">
+            <mat-label>Hotel's name</mat-label>
+            <input matInput placeholder="Hotel's name" [(ngModel)]="newHotel.name">
+        </mat-form-field>
+        <mat-form-field class="ml-5 mt-5" appearance="outline">
+            <mat-label>Hotel's description</mat-label>
+            <input matInput placeholder="Hotel's description" [(ngModel)]="newHotel.description">
+        </mat-form-field>
+        <mat-form-field class="ml-5 mt-5" appearance="outline">
+            <mat-label>Hotel's address</mat-label>
+            <input matInput placeholder="Hotel's address" [(ngModel)]="newHotel.address">
+        </mat-form-field>
+        <button id="add-button-hotel" mat-raised-button class="ml-10 mt-2" (click)="addHotel()">Register Hotel</button>
+    </ng-container>
+    <mat-card id="card-hotel" class="ml-30 mt-10 w-200" *ngFor="let hotel of hotels">
+        <h3>{{  hotel.name }}</h3>
+        <mat-list>
+            <h2>Description:</h2><p><i>{{ hotel.description }}</i></p>
+            <h2>Address: :</h2><p><i>{{ hotel.address }}</i></p>
+        </mat-list>
+        <button id="update-hotel-button" mat-raised-button class="ml-40 mt-5">Update Hotel</button>
+        <button id="delete-hotel-button" mat-raised-button class="ml-30 mt-5">Delete Hotel</button>
+    </mat-card>
+</div>
