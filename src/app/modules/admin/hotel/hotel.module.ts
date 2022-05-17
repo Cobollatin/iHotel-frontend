@@ -11,7 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {HotelComponent} from './hotel.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const exampleRoutes: Route[] = [
     {
@@ -35,7 +35,8 @@ const exampleRoutes: Route[] = [
         CommonModule,
         FormsModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSnackBarModule,
     ]
 })
 export class HotelModule

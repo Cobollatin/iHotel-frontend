@@ -14,6 +14,8 @@ import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {ToastrModule} from 'ngx-toastr';
+import {CommonModule} from '@angular/common';
 
 
 const routerConfig: ExtraOptions = {
@@ -26,6 +28,7 @@ const routerConfig: ExtraOptions = {
         AppComponent
     ],
     imports     : [
+        CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes, routerConfig),
@@ -43,7 +46,8 @@ const routerConfig: ExtraOptions = {
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({}),
         MatPaginatorModule,
-        MatGridListModule
+        MatGridListModule,
+        ToastrModule.forRoot()
     ],
     bootstrap   : [
         AppComponent

@@ -1,17 +1,4 @@
 <div>
-<!--    <ng-container *ngIf="addServiceDrawer">-->
-<!--        <h2 id="title-add">Add service a {{customerName}}</h2>-->
-<!--        <mat-form-field appearance="outline">-->
-<!--            <mat-label>Service</mat-label>-->
-<!--            <mat-select [(ngModel)]="selectedService" name="food">-->
-<!--                <mat-option *ngFor="let service of services" [value]="service.name">-->
-<!--                    {{service.name}}-->
-<!--                </mat-option>-->
-<!--            </mat-select>-->
-<!--        </mat-form-field>-->
-<!--        <button id="add-button" mat-raised-button class="ml-30 mt-2" (click)="addCustomerService()">Register Service</button>-->
-<!--        <button id="cancel-button" mat-raised-button class="ml-30 mt-2" (click)="cancelCustomerService()">Cancel</button>-->
-<!--    </ng-container>-->
     <ng-container  *ngIf="modifyHotelDrawer">
         <h2 id="title-add-hotel" class="mt-10">Add Hotel</h2>
         <mat-form-field class="ml-28 mt-5" appearance="outline">
@@ -35,6 +22,6 @@
             <h2>Address: :</h2><p><i>{{ hotel.address }}</i></p>
         </mat-list>
         <button id="update-hotel-button" mat-raised-button class="ml-40 mt-5">Update Hotel</button>
-        <button id="delete-hotel-button" mat-raised-button class="ml-30 mt-5">Delete Hotel</button>
+        <button id="delete-hotel-button" mat-raised-button class="ml-30 mt-5" (click)="deleteSnack(hotel)">Delete Hotel</button>
     </mat-card>
 </div>

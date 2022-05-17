@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Hotel} from '../components.model';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -12,8 +12,6 @@ import {Hotel} from '../components.model';
 
 export class HotelComponent implements OnInit{
     newHotel: Hotel;
-    selectedHotel: string = '';
-    hotelId: number;
     modifyHotelDrawer: boolean = true;
     hotels: Array<Hotel> = [
         {
@@ -37,19 +35,42 @@ export class HotelComponent implements OnInit{
     ];
     numberHotels: number = this.hotels.length - 1;
 
-    ngOnInit() {
+    constructor(private _snackBar: MatSnackBar) {}
+
+    ngOnInit(): any {
         this.newHotel = {} as Hotel;
     }
 
     addHotel(): any {
         this.numberHotels++;
-        this.hotels.push({id: this.numberHotels,name: this.newHotel.name, description: this.newHotel.description, address: this.newHotel.address});
-        this.newHotel = null;
+        console.log(this.newHotel);
+        this.hotels.push({
+            id: this.numberHotels,
+            name: this.newHotel.name,
+            description: this.newHotel.description,
+            address: this.newHotel.address
+        });
+        this.newHotel = {} as Hotel;
         console.log(this.hotels);
     }
 
-    cancelCustomerService(): any{
+    deleteHotel(hotel: Hotel): any {
+    this._snackBar.open('Hotel deleted', 'Okay',{
+        duration: 3000,
+        direction: 'rtl',
 
+    });
     }
+
+    deleteSnack(hotel: Hotel): any {
+
+        const confirmDelete = window.confirm(`¿Are you sure to delete ${hotel.name}?`);
+
+
+        if(confirmDelete) {
+            this.deleteHotel(hotel);
+        }
+    }
+
 }
 
