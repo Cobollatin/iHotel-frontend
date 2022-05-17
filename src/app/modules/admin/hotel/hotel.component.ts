@@ -11,8 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 
 export class HotelComponent implements OnInit{
-    newHotel: Hotel;
-    modifyHotelDrawer: boolean = true;
+    hotel: Hotel;
+    modifyHotelDrawer: boolean = false;
+    selectHotel: Hotel;
     hotels: Array<Hotel> = [
         {
             id: 0,
@@ -38,38 +39,110 @@ export class HotelComponent implements OnInit{
     constructor(private _snackBar: MatSnackBar) {}
 
     ngOnInit(): any {
-        this.newHotel = {} as Hotel;
+        this.hotel = {} as Hotel;
     }
 
     addHotel(): any {
-        this.numberHotels++;
-        console.log(this.newHotel);
-        this.hotels.push({
-            id: this.numberHotels,
-            name: this.newHotel.name,
-            description: this.newHotel.description,
-            address: this.newHotel.address
-        });
-        this.newHotel = {} as Hotel;
-        console.log(this.hotels);
+         if(this.hotel.name !== undefined && this.hotel.description !== undefined && this.hotel.address !== undefined){
+            this.numberHotels++;
+            this.hotels.push({
+                id: this.numberHotels,
+                name: this.hotel.name,
+                description: this.hotel.description,
+                address: this.hotel.address
+            });
+            this.hotel = {} as Hotel;
+        } else {
+             this._snackBar.open('Data Invalid', 'Okay',{
+                 duration: 3000,
+                 horizontalPosition: 'end',
+                 verticalPosition: 'top'
+             });
+         }
     }
 
     deleteHotel(hotel: Hotel): any {
-    this._snackBar.open('Hotel deleted', 'Okay',{
-        duration: 3000,
-        direction: 'rtl',
-
-    });
+        this.hotels =  this.hotels.filter((value)=>{
+            if(value.id !== hotel.id) {return value;}
+        });
+        this._snackBar.open('Hotel deleted', 'Okay',{
+            duration: 3000,
+            horizontalPosition: 'end',
+            verticalPosition: 'top'
+        });
     }
 
-    deleteSnack(hotel: Hotel): any {
+    updateHotel(): any{
+
+        if(this.hotel.name !== ''){
+            this.hotels = this.hotels.map((value: Hotel) =>{
+                if(value.id === this.hotel.id){
+                    value= this.hotel;
+                }
+                return value;
+            });
+
+            this._snackBar.open('Hotel updated', 'Okay',{
+                duration: 3000,
+                horizontalPosition: 'end',
+                verticalPosition: 'top'
+            });
+
+            this.modifyHotelDrawer = false;
+            this.hotel = {} as Hotel;
+        }
+        else{
+            this.hotels = this.hotels.map((value: Hotel) =>{
+                if(value.id === this.hotel.id){
+                    value.name= this.selectHotel.name;
+                    value.description= this.selectHotel.description;
+                    value.address= this.selectHotel.address;
+                }
+                return value;
+            });
+
+            this._snackBar.open('Data Invalid', 'Okay',{
+                duration: 3000,
+                horizontalPosition: 'end',
+                verticalPosition: 'top'
+            });
+        }
+    }
+
+    updateSelectionHotel(hotel: Hotel): any {
+        this.modifyHotelDrawer = true;
+        this.hotel = hotel;
+        this.selectHotel = {
+            id: null,
+            name: this.hotel.name,
+            description: this.hotel.description,
+            address: this.hotel.address
+        };
+        console.log(this.selectHotel);
+    }
+
+    deleteConfirmation(hotel: Hotel): any {
 
         const confirmDelete = window.confirm(`¿Are you sure to delete ${hotel.name}?`);
-
 
         if(confirmDelete) {
             this.deleteHotel(hotel);
         }
+    }
+
+    cancelUpdateHotel(): any {
+        this.modifyHotelDrawer = false;
+
+        this.hotels = this.hotels.map((value: Hotel) =>{
+            if(value.id === this.hotel.id){
+                value.name= this.selectHotel.name;
+                value.description= this.selectHotel.description;
+                value.address= this.selectHotel.address;
+            }
+            return value;
+        });
+
+        this.hotel = {} as Hotel;
     }
 
 }
