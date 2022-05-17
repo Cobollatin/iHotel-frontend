@@ -1,19 +1,36 @@
 <div>
-    <ng-container  *ngIf="modifyHotelDrawer">
-        <h2 id="title-add-hotel" class="mt-10">Add Hotel</h2>
+    <ng-container *ngIf="modifyHotelDrawer">
+        <h2 id="title-update-hotel" class="mt-10" >Update Hotel</h2>
         <mat-form-field class="ml-28 mt-5" appearance="outline">
             <mat-label>Hotel's name</mat-label>
-            <input matInput placeholder="Hotel's name" [(ngModel)]="newHotel.name">
+            <input matInput placeholder="Hotel's name" [(ngModel)]="hotel.name">
         </mat-form-field>
         <mat-form-field class="ml-5 mt-5" appearance="outline">
             <mat-label>Hotel's description</mat-label>
-            <input matInput placeholder="Hotel's description" [(ngModel)]="newHotel.description">
+            <input matInput placeholder="Hotel's description" [(ngModel)]="hotel.description">
         </mat-form-field>
         <mat-form-field class="ml-5 mt-5" appearance="outline">
             <mat-label>Hotel's address</mat-label>
-            <input matInput placeholder="Hotel's address" [(ngModel)]="newHotel.address">
+            <input matInput placeholder="Hotel's address" [(ngModel)]="hotel.address">
         </mat-form-field>
-        <button id="add-button-hotel" mat-raised-button class="ml-10 mt-2" (click)="addHotel()">Register Hotel</button>
+        <button id="add-button-hotel" mat-raised-button class="ml-5 mt-2" (click)="updateHotel()">Update</button>
+        <button id="delete-hotel-button" mat-raised-button class="ml-5 mt-2" (click)="cancelUpdateHotel()">Cancel</button>
+    </ng-container>
+    <ng-container *ngIf="!modifyHotelDrawer">
+        <h2 id="title-add-hotel" class="mt-10" >Add Hotel</h2>
+        <mat-form-field class="ml-28 mt-5" appearance="outline">
+            <mat-label>Hotel's name</mat-label>
+            <input matInput placeholder="Hotel's name" [(ngModel)]="hotel.name">
+        </mat-form-field>
+        <mat-form-field class="ml-5 mt-5" appearance="outline">
+            <mat-label>Hotel's description</mat-label>
+            <input matInput placeholder="Hotel's description" [(ngModel)]="hotel.description">
+        </mat-form-field>
+        <mat-form-field class="ml-5 mt-5" appearance="outline">
+            <mat-label>Hotel's address</mat-label>
+            <input matInput placeholder="Hotel's address" [(ngModel)]="hotel.address">
+        </mat-form-field>
+        <button id="add-button-hotel" mat-raised-button class="ml-10 mt-2" (click)="addHotel()">Register</button>
     </ng-container>
     <mat-card id="card-hotel" class="ml-30 mt-10 w-200" *ngFor="let hotel of hotels">
         <h3>{{  hotel.name }}</h3>
@@ -21,7 +38,7 @@
             <h2>Description:</h2><p><i>{{ hotel.description }}</i></p>
             <h2>Address: :</h2><p><i>{{ hotel.address }}</i></p>
         </mat-list>
-        <button id="update-hotel-button" mat-raised-button class="ml-40 mt-5">Update Hotel</button>
-        <button id="delete-hotel-button" mat-raised-button class="ml-30 mt-5" (click)="deleteSnack(hotel)">Delete Hotel</button>
+        <button id="update-hotel-button" mat-raised-button class="ml-40 mt-5" (click)="updateSelectionHotel(hotel)">Update Hotel</button>
+        <button id="delete-hotel-button" mat-raised-button class="ml-30 mt-5" (click)="deleteConfirmation(hotel)">Delete Hotel</button>
     </mat-card>
 </div>
