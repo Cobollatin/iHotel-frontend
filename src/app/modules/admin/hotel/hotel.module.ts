@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {HotelComponent} from './hotel.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { HotelComponent } from './hotel.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TranslocoModule } from '@ngneat/transloco';
 
 const exampleRoutes: Route[] = [
     {
-        path     : '',
+        path: '',
         component: HotelComponent
     }
 ];
@@ -37,8 +38,8 @@ const exampleRoutes: Route[] = [
         MatInputModule,
         MatSelectModule,
         MatSnackBarModule,
+        TranslocoModule
     ]
 })
-export class HotelModule
-{
+export class HotelModule {
 }
