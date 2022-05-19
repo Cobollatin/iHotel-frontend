@@ -39,7 +39,6 @@ const exampleRoutes: Route[] = [
         MatInputModule,
         MatNativeDateModule,
         MatMomentDateModule
-
     ]
 })
 export class HomeModule
