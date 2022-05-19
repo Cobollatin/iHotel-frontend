@@ -22,7 +22,7 @@ import { ClassyLayoutComponent } from 'app/layout/layouts/classy/classy.componen
     declarations: [
         ClassyLayoutComponent
     ],
-    imports     : [
+    imports: [
         HttpClientModule,
         RouterModule,
         MatButtonModule,
@@ -41,10 +41,9 @@ import { ClassyLayoutComponent } from 'app/layout/layouts/classy/classy.componen
         UserModule,
         SharedModule
     ],
-    exports     : [
+    exports: [
         ClassyLayoutComponent
     ]
 })
-export class ClassyLayoutModule
-{
+export class ClassyLayoutModule {
 }
