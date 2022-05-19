@@ -6,5 +6,4 @@ export const user = {
     email : 'briansteven@ihotel.com',
     avatar: '../../../../assets/images/avatars/brian-hughes.jpg',
     status: 'online',
-    number: '942461080'
 };
