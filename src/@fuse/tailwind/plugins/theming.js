@@ -185,40 +185,40 @@ const theming = plugin.withOptions((options) => ({
                             light: {
                                 'bg-app-bar'   : '#FFFFFF',
                                 'bg-card'      : '#FFFFFF',
-                                'bg-default'   : colors.slate[100],
+                                'bg-default'   : '#FFFFFF',
                                 'bg-dialog'    : '#FFFFFF',
-                                'bg-hover'     : chroma(colors.slate[400]).alpha(0.12).css(),
-                                'bg-status-bar': colors.slate[300]
+                                'bg-hover'     : chroma(colors.emerald[400]).alpha(0.12).css(),
+                                'bg-status-bar': colors.emerald[300]
                             },
                             dark : {
-                                'bg-app-bar'   : colors.slate[900],
-                                'bg-card'      : colors.slate[800],
-                                'bg-default'   : colors.slate[900],
-                                'bg-dialog'    : colors.slate[800],
+                                'bg-app-bar'   : colors.emerald[900],
+                                'bg-card'      : colors.emerald[800],
+                                'bg-default'   : colors.emerald[800],
+                                'bg-dialog'    : colors.emerald[800],
                                 'bg-hover'     : 'rgba(255, 255, 255, 0.05)',
-                                'bg-status-bar': colors.slate[900]
+                                'bg-status-bar': colors.emerald[900]
                             }
                         },
                         foreground: {
                             light: {
-                                'text-default'  : colors.slate[800],
-                                'text-secondary': colors.slate[500],
-                                'text-hint'     : colors.slate[400],
-                                'text-disabled' : colors.slate[400],
-                                'border'        : colors.slate[200],
-                                'divider'       : colors.slate[200],
-                                'icon'          : colors.slate[500],
-                                'mat-icon'      : colors.slate[500]
+                                'text-default'  : colors.emerald[800],
+                                'text-secondary': colors.emerald[500],
+                                'text-hint'     : colors.emerald[400],
+                                'text-disabled' : colors.emerald[400],
+                                'border'        : colors.emerald[200],
+                                'divider'       : colors.emerald[200],
+                                'icon'          : colors.emerald[500],
+                                'mat-icon'      : colors.emerald[500]
                             },
                             dark : {
                                 'text-default'  : '#FFFFFF',
-                                'text-secondary': colors.slate[400],
-                                'text-hint'     : colors.slate[500],
-                                'text-disabled' : colors.slate[600],
-                                'border'        : chroma(colors.slate[100]).alpha(0.12).css(),
-                                'divider'       : chroma(colors.slate[100]).alpha(0.12).css(),
-                                'icon'          : colors.slate[400],
-                                'mat-icon'      : colors.slate[400]
+                                'text-secondary': colors.emerald[400],
+                                'text-hint'     : colors.emerald[500],
+                                'text-disabled' : colors.emerald[600],
+                                'border'        : chroma(colors.emerald[100]).alpha(0.12).css(),
+                                'divider'       : chroma(colors.emerald[100]).alpha(0.12).css(),
+                                'icon'          : colors.emerald[400],
+                                'mat-icon'      : colors.emerald[400]
                             }
                         }
                     },
