@@ -2,9 +2,8 @@
 <fuse-loading-bar></fuse-loading-bar>
 
 <!-- Navigation -->
-<fuse-vertical-navigation class="bg-primary print:hidden" [mode]="isScreenSmall ? 'over' : 'side'"
-    [name]="'mainNavigation'" [navigation]="navigation.default" [opened]="!isScreenSmall"
-    >
+<fuse-vertical-navigation class="print:hidden bg-primary" [mode]="isScreenSmall ? 'over' : 'side'" [name]="'mainNavigation'"
+    [navigation]="navigation.default" [opened]="!isScreenSmall">
     <!-- Navigation header hook -->
     <ng-container fuseVerticalNavigationContentHeader>
         <div class="flex items-center w-full p-4 pl-6">
@@ -21,6 +20,7 @@
     </ng-container>
     <!-- Navigation footer hook -->
 </fuse-vertical-navigation>
+
 
 <!-- Wrapper -->
 <div class="flex flex-col flex-auto w-full min-w-0">
@@ -42,7 +42,7 @@
     </div>
 
     <!-- Content -->
-    <div class="flex flex-col flex-auto">
+    <div class="flex flex-col flex-auto bg-card">
         <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
              Otherwise, layout changes won't be registered and the view won't be updated! -->
         <router-outlet *ngIf="true"></router-outlet>
