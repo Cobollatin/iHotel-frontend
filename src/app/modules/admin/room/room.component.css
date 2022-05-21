@@ -1,0 +1,42 @@
+#title-add-room {
+    margin-top: 10px;
+    font-size: 30px;
+    margin-left: 120px;
+    font-weight: 700;
+}
+#card-room h3 {
+    font-size: 30px;
+}
+#card-room h2 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+#card-room p{
+    font-size: 15px;
+}
+
+
+
+
+#title-add-employee {
+    margin-top: 10px;
+    font-size: 30px;
+    margin-left: 120px;
+    font-weight: 700;
+}
+#add-button-employee{
+    background: #009D76;
+    color: #FFFFFF;
+    height: 70px;
+}
+
+#update-room-button{
+    background: #009D76;
+    color: #FFFFFF;
+    height: 70px;
+}
+#delete-room-button{
+    background: #D82C0D;
+    color: #FFFFFF;
+    height: 70px;
+}
