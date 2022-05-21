@@ -1,0 +1,30 @@
+<div>
+    <ng-container>
+        <h2 id="title-add-room" class="mt-10" *transloco="let t">{{ t('select-hotel-title') }}</h2>
+        <mat-form-field appearance="outline" class="ml-28 mt-5 w-200">
+            <mat-label>Hotel</mat-label>
+            <mat-select [(ngModel)]="selectHotel" name="food">
+                <mat-option *ngFor="let hotel of hotels" [value]="hotel">
+                    {{hotel.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-container>
+    <ng-container *ngFor="let room of rooms">
+        <mat-card id="card-room" class="ml-30 mt-10 w-200" *ngIf="room.hotelId === selectHotel.id"  >
+            <h3 *transloco="let t">{{ t('card-title-room') }} {{ room.roomNumber }}</h3>
+            <mat-list>
+                <h2><b *transloco="let t">{{ t('card-title-floor') }} </b>{{ room.floor }}</h2>
+                <h2><b *transloco="let t">{{ t('card-title-room-type') }} </b>{{ roomType[room.roomTypeId].name }}</h2>
+                <h2><b *transloco="let t">{{ t('card-title-amount-beds') }} </b></h2>
+                <mat-list *ngFor="let bed of roomType[room.roomTypeId].beds" >
+                    <h4 *ngIf="bed.amount === 1" ><h4 *transloco="let t">■  {{ bedType[bed.bedId].name }}: {{ bed.amount }} {{ t('card-paragraph-bed') }} </h4></h4>
+                    <h4 *ngIf="bed.amount !== 1" ><h4 *transloco="let t">■  {{ bedType[bed.bedId].name }}: {{ bed.amount }} {{ t('card-paragraph-bed') }}s</h4></h4>
+                </mat-list>
+            </mat-list>
+            <button id="update-room-button" mat-raised-button class="ml-40 mt-5" *transloco="let t">{{ t('room-update-btn') }}</button>
+            <button id="delete-room-button" mat-raised-button class="ml-30 mt-5" *transloco="let t">{{ t('room-delete-btn') }}</button>
+        </mat-card>
+    </ng-container>
+</div>
+

@@ -1,4 +1,24 @@
 {
     "language": "en_US",
-    "welcome-back": "Welcome back"
+    "hotel-add": "Add Hotel",
+    "hotel-update": "Update Hotel",
+    "hotel-name-input": "Hotel's name",
+    "hotel-description-input": "Hotel's description",
+    "hotel-address-input": "Hotel's address",
+    "hotel-register-btn": "Register",
+    "hotel-update-btn": "Update",
+    "hotel-cancel-btn": "Cancel",
+    "hotel-description": "Description:",
+    "hotel-address": "Address:",
+    "update-hotel": "Update Hotel",
+    "delete-hotel": "Delete Hotel",
+    "select-hotel-title": "Select Hotel",
+    "card-title-room": "Room",
+    "card-title-floor": "Floor:  ",
+    "card-title-room-type": "Room Type:  ",
+    "card-title-amount-beds": "Amount Of Beds: ",
+    "card-paragraph-bed": "bed",
+    "room-update-btn": "Update Room",
+    "room-delete-btn": "Delete Room"
 }
+
