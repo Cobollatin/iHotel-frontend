@@ -92,13 +92,13 @@ body .light {
                 status-bar: #CBD5E1, /* slate.300 */
                 app-bar: #FFFFFF,
                 background: #F1F5F9, /* slate.100 */
-                hover: rgba(148, 163, 184, 0.12), /* slate.400 + opacity */
+                hover: rgba(255, 255, 255, 0.05), /* slate.400 + opacity */
                 card: #FFFFFF,
                 dialog: #FFFFFF,
                 disabled-button: rgba(148, 163, 184, 0.38), /* slate.400 + opacity */
                 raised-button: #FFFFFF,
                 focused-button: #64748B, /* slate.500 */
-                selected-button: #E2E8F0, /* slate.200 */
+                selected-button: rgba(255, 255, 255, 0.05), /* slate.200 */
                 selected-disabled-button: #E2E8F0, /* slate.200 */
                 disabled-button-toggle: #CBD5E1, /* slate.300 */
                 unselected-chip: #E2E8F0, /* slate.200 */
