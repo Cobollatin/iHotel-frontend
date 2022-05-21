@@ -60,4 +60,13 @@ export class UserService {
             })
         );
     }
+
+    /**
+     *  Create a new user
+     *
+     * @param credentials
+     */
+    create(user: User): Observable<any> {
+        return this._httpClient.post('api/common/user', { user });
+    }
 }

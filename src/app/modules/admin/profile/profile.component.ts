@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {User} from '../../../core/user/user.types';
 import {UserService} from '../../../core/user/user.service';
 import {Subject, takeUntil} from 'rxjs';
@@ -8,7 +8,7 @@ import {Subject, takeUntil} from 'rxjs';
     templateUrl  : './profile.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class ProfileComponent
+export class ProfileComponent implements OnInit
 {
     /**
      * Constructor
