@@ -24,6 +24,9 @@ export class FuseConfigService {
     /**
      * Setter & getter for config
      */
+    get config$(): Observable<any> {
+        return this._config.asObservable();
+    }
     set config(value: any) {
         // Merge the new config over to the current config
         const config = merge({}, this._config.getValue(), value);
@@ -32,9 +35,6 @@ export class FuseConfigService {
         this._config.next(config);
     }
 
-    get config$(): Observable<any> {
-        return this._config.asObservable();
-    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
