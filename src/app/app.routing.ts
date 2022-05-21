@@ -67,7 +67,7 @@ export const appRoutes: Route[] = [
             { path: 'bill', loadChildren: () => import('app/modules/admin/bill/bill.module').then(m => m.BillModule) },
             { path: 'doc', loadChildren: () => import('app/modules/admin/doc/doc.module').then(m => m.DocModule) },
             { path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule) },
-
+            { path: 'room', loadChildren: () => import('app/modules/admin/room/room.module').then(m => m.RoomModule) },
         ]
     }
 ];

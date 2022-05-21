@@ -15,7 +15,15 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:office-building',
         link : '/hotel'
-    },  {
+    },
+    {
+        id   : 'room',
+        title: 'Rooms',
+        type : 'basic',
+        icon : 'heroicons_outline:tag',
+        link : '/room'
+    },
+    {
         id   : 'guests',
         title: 'Guests',
         type : 'basic',

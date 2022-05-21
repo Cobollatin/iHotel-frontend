@@ -24,4 +24,11 @@ export interface Employee {
     phoneNumber: string;
     position: string;
 }
+export interface Room {
+    id: number;
+    hotelId: number;
+    roomTypeId: number;
+    roomNumber: number;
+    floor: number;
+}
 
