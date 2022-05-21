@@ -191,9 +191,9 @@ const theming = plugin.withOptions((options) => ({
                         foreground: {
                             light: {
                                 'text-default': '#000000',
-                                'text-secondary': '#000000',
-                                'text-hint': '#000000',
-                                'text-disabled': '#000000',
+                                'text-secondary': chroma(colors.black).alpha(0.75).css(),
+                                'text-hint': chroma(colors.black).alpha(0.50).css(),
+                                'text-disabled': chroma(colors.black).alpha(0.25).css(),
                                 'border': '#000000',
                                 'divider': '#000000',
                                 'icon': '#000000',

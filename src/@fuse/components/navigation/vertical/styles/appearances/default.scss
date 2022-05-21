@@ -509,7 +509,7 @@ fuse-vertical-navigation-collapsable-item {
 
                 &.fuse-vertical-navigation-item-active,
                 &.fuse-vertical-navigation-item-active-forced {
-                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-12;
+                    @apply bg-white bg-opacity-12 dark:bg-white dark:bg-opacity-12;
 
                     .fuse-vertical-navigation-item-icon {
                         @apply opacity-100;
@@ -529,7 +529,7 @@ fuse-vertical-navigation-collapsable-item {
             &:not(.fuse-vertical-navigation-item-active-forced):not(.fuse-vertical-navigation-item-active):not(.fuse-vertical-navigation-item-disabled) {
 
                 &:hover {
-                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-12;
+                    @apply bg-white bg-opacity-12 dark:bg-white dark:bg-opacity-12;
 
                     .fuse-vertical-navigation-item-icon {
                         @apply opacity-100;
