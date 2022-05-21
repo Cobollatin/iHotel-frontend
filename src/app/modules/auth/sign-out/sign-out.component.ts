@@ -2,17 +2,18 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize, Subject, takeUntil, takeWhile, tap, timer } from 'rxjs';
 import { AuthService } from 'app/core/auth/auth.service';
+import { FuseConfigService } from '@fuse/services/config';
+import { AppConfig } from 'app/core/config/app.config';
 
 @Component({
-    selector     : 'auth-sign-out',
-    templateUrl  : './sign-out.component.html',
+    selector: 'auth-sign-out',
+    templateUrl: './sign-out.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class AuthSignOutComponent implements OnInit, OnDestroy
-{
+export class AuthSignOutComponent implements OnInit, OnDestroy {
     countdown: number = 5;
     countdownMapping: any = {
-        '=1'   : '# second',
+        '=1': '# second',
         'other': '# seconds'
     };
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -22,9 +23,9 @@ export class AuthSignOutComponent implements OnInit, OnDestroy
      */
     constructor(
         private _authService: AuthService,
-        private _router: Router
-    )
-    {
+        private _router: Router,
+        private _fuseConfigService: FuseConfigService,
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -34,8 +35,9 @@ export class AuthSignOutComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
+        // Resets theme
+        this._fuseConfigService.config = { scheme: 'light' };
         // Sign out
         this._authService.signOut();
 
@@ -55,8 +57,7 @@ export class AuthSignOutComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
