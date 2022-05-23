@@ -19,6 +19,11 @@
     "card-title-amount-beds": "Amount Of Beds: ",
     "card-paragraph-bed": "bed",
     "room-update-btn": "Update Room",
-    "room-delete-btn": "Delete Room"
+    "room-delete-btn": "Delete Room",
+    "add-room-title": "Add Room",
+    "update-room-title": "Update Room",
+    "room-number-input": "Room Number",
+    "room-type-input": "Room Type",
+    "room-floor-input": "Floor"
 }
 
