@@ -1,4 +1,4 @@
-#title-add-room {
+#title-select-hotel-room {
     margin-top: 10px;
     font-size: 30px;
     margin-left: 120px;
@@ -14,26 +14,20 @@
 #card-room p{
     font-size: 15px;
 }
-
-
-
-
-#title-add-employee {
+#title-add-room, #title-update-room {
     margin-top: 10px;
     font-size: 30px;
     margin-left: 120px;
     font-weight: 700;
 }
-#add-button-employee{
+#add-button-room, #update-button-room{
     background: #009D76;
     color: #FFFFFF;
     height: 70px;
 }
-
-#update-room-button{
-    background: #009D76;
-    color: #FFFFFF;
-    height: 70px;
+.mat-snack-bar-container {
+    background: #009D76 !important;
+    color: #ffffff !important;
 }
 #delete-room-button{
     background: #D82C0D;

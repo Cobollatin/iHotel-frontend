@@ -19,5 +19,10 @@
     "card-title-amount-beds": "Cantidad de camas",
     "card-paragraph-bed": "cuarto",
     "room-update-btn": "Actualizar Cuarto",
-    "room-delete-btn": "Eliminar Cuarto"
+    "room-delete-btn": "Eliminar Cuarto",
+    "add-room-title": "Añadir Cuarto",
+    "update-room-title": "Actualizar Cuarto",
+    "room-number-input": "Número de Cuarto",
+    "room-type-input": "Tipo de Cuarto",
+    "room-floor-input": "Piso"
 }
