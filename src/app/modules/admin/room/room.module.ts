@@ -11,7 +11,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {RoomComponent} from './room.component';
-import {TranslocoModule} from "@ngneat/transloco";
+import {TranslocoModule} from '@ngneat/transloco';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const exampleRoutes: Route[] = [
@@ -37,6 +38,7 @@ const exampleRoutes: Route[] = [
         FormsModule,
         MatInputModule,
         MatSelectModule,
+        MatSnackBarModule,
         TranslocoModule
     ]
 })

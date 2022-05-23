@@ -121,7 +121,7 @@ export class HotelComponent implements OnInit{
         console.log(this.selectHotel);
     }
 
-    deleteConfirmation(hotel: Hotel): any {
+    deleteHotelConfirmation(hotel: Hotel): any {
 
         const confirmDelete = window.confirm(`¿Are you sure to delete ${hotel.name}?`);
 
