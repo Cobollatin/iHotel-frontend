@@ -11,6 +11,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {TranslocoModule} from "@ngneat/transloco";
 
 const exampleRoutes: Route[] = [
     {
@@ -34,7 +36,9 @@ const exampleRoutes: Route[] = [
         CommonModule,
         FormsModule,
         MatInputModule,
-        MatSelectModule
+        MatSnackBarModule,
+        MatSelectModule,
+        TranslocoModule
     ]
 })
 export class ServiceModule
