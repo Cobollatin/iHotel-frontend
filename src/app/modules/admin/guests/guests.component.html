@@ -4,8 +4,7 @@
     <div class="flex flex-col flex-auto w-full">
 
         <!-- CONTENT GOES HERE -->
-        <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
-
+        <div class="ml-15 flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
             <div class="flex items-center justify-between w-full">
                 <div>
                     <h1 class="mt-4 mb-4 text-3xl font-extrabold leading-7 tracking-tight truncat md:text-4xl ">
@@ -13,43 +12,22 @@
                 </div>
             </div>
             <div class="w-full mt-8">
-
                 <h2 class=" text-2xl font-semibold leading-tight ">Upcoming reservations</h2>
             </div>
-
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 w-full mt-8">
                 <div class="grid gap-8 sm:grid-flow-col xl:grid-flow-row">
                     <button
-                        style="max-width: 250px;background-color:  #009D76;"
-                        class="sm:inline-flex ml-3"
-                        mat-flat-button
-                        (click)="openDialogRegister()"
-                        [color]="'primary'">
-                        <span class="ml-2">Register an Employee</span>
+                        id="add-button-products" mat-raised-button (click)="openDialogRegister()">
+                        Register a guest
                     </button>
-                    <div
-                        class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
-                        <h1>caca</h1>
-                        <button
-                            mat-flat-button
-                            [color]="'primary'">
-                            <span class="ml-2">acaca</span>
-                        </button>
-                        <h3>acac</h3>
-                        <h1>sdsd</h1>
+                    <mat-card class=" mt-10 w-200 mb-5" *ngFor="let guest of guests">
+                        <h3 class="mat-card-guests">Name: <strong>{{  guests[(guest.id)].name }} </strong></h3>
+                        <p
+                            class="mat-card-guests-content">IdCard: {{  guests[(guest.id)].idCard }} <br> Phone: {{  guests[(guest.id)].phone }} <br> Email: {{  guests[(guest.id)].email }} <br> Reservation date: {{  guests[(guest.id)].reservationStart}} -> {{guests[(guest.id)].reservationEnd}} <br> Room category: {{ guests[(guest.id)].roomCategory }} <br> Room price: {{guests[(guest.id)].roomPrice}} <br>  Number of Beds: {{guests[(guest.id)].numberOfBeds}} <br> Number of Bathrooms: {{guests[(guest.id)].numberOfBathrooms}} <br> Number of Rooms: {{guests[(guest.id)].numberOfRooms}}  </p>
+                        <button id="update-button-guest" mat-raised-button class="ml-40 mt-10 " (click)="openDialogUpdate(guests[(guest.id)].id)" >Update Guest</button>
+                        <button id="delete-button-guest" mat-raised-button class="ml-30 mt-10" (click)="openDialogDelete()" >Delete Guest</button>
+                    </mat-card>
 
-                    </div>
-                    <div
-                        class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
-                        <h1>wdwdw</h1>
-                        <button
-                            mat-flat-button
-                            [color]="'primary'">
-                            <span class="ml-2">wdwd</span>
-                        </button>
-                        <h3>wdwdw</h3>
-                        <h1>wdwda</h1>
-                    </div>
                 </div>
             </div>
 
