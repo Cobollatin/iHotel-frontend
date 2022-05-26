@@ -4,7 +4,7 @@ import { GuestsComponent } from 'app/modules/admin/guests/guests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {RegisterComponent} from './dialogRegister/dialog.component';
+import {RegisterComponent} from './dialog/dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
@@ -13,6 +13,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 const exampleRoutes: Route[] = [
     {
         path     : '',
@@ -24,7 +26,6 @@ const exampleRoutes: Route[] = [
     declarations: [
         GuestsComponent,
         RegisterComponent,
-
     ],
     imports: [
         RouterModule.forChild(exampleRoutes),
@@ -33,7 +34,10 @@ const exampleRoutes: Route[] = [
         MatGridListModule,
         MatIconModule,
         MatButtonModule,
+        MatDatepickerModule,
         MatAutocompleteModule,
+        MatNativeDateModule,
+        MatRippleModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         CommonModule,
