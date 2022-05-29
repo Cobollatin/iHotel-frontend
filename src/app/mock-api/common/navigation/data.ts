@@ -71,5 +71,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:document-report',
         link : '/doc'
+    },
+    {
+        id: 'reports',
+        title: 'Reports',
+        type: 'basic',
+        icon: 'heroicons_outline:document-report',
+        link: '/reports'
     }
 ];
