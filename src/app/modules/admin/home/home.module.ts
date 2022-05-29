@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {GoogleChartsModule} from 'angular-google-charts';
 
 
 
@@ -36,7 +37,8 @@ const exampleRoutes: Route[] = [
         MatFormFieldModule,
         MatInputModule,
         MatNativeDateModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        GoogleChartsModule
     ]
 })
 export class HomeModule

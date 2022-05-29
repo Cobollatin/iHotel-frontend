@@ -68,6 +68,7 @@ export const appRoutes: Route[] = [
             { path: 'doc', loadChildren: () => import('app/modules/admin/doc/doc.module').then(m => m.DocModule) },
             { path: 'profile', loadChildren: () => import('app/modules/admin/profile/profile.module').then(m => m.ProfileModule) },
             { path: 'room', loadChildren: () => import('app/modules/admin/room/room.module').then(m => m.RoomModule) },
+            { path: 'reports', loadChildren: () => import ('app/modules/admin/reports/reports.module').then(m => m.ReportsModule)}
         ]
     }
 ];
