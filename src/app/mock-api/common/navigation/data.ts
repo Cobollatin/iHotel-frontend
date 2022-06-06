@@ -59,20 +59,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/product'
     },
     {
-        id   : 'bills',
-        title: 'Bills',
-        type : 'basic',
-        icon : 'heroicons_outline:credit-card',
-        link : '/bill'
-    },
-    {
-        id   : 'docs',
-        title: 'Docs',
-        type : 'basic',
-        icon : 'heroicons_outline:document-report',
-        link : '/doc'
-    },
-    {
         id: 'reports',
         title: 'Reports',
         type: 'basic',
