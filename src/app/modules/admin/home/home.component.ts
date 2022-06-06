@@ -4,6 +4,7 @@ import { Guest } from '../../../core/guests/guests.types';
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
+    styleUrls  : ['./home.components.css'],
     encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {

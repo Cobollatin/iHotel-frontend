@@ -47,7 +47,7 @@ const routerConfig: ExtraOptions = {
         MarkdownModule.forRoot({}),
         MatPaginatorModule,
         MatGridListModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
     ],
     bootstrap   : [
         AppComponent
