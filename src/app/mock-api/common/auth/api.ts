@@ -70,6 +70,7 @@ export class AuthMockApi {
                     (response) => {
                         if (response['status'] === 'success') {
                             this._user = cloneDeep(response['payload']['user']);
+                            this._user.avatar = 'assets/images/avatars/default.png';
                             localStorage.setItem('user', JSON.stringify(this._user));
                             suscriber.next(
                                 [
