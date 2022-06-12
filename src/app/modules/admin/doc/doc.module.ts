@@ -10,7 +10,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import {DocComponent} from "./doc.component";
+import {DocComponent} from './doc.component';
 
 
 const exampleRoutes: Route[] = [

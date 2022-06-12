@@ -2,11 +2,11 @@ export interface Guest
 {
     id: string;
     name: string;
-    lastName:string;
+    lastName: string;
     email: string;
     avatar?: string;
     status?: string;
-    phonenumber?:string;
-    dayToStay?:string;
-    totalToPay?:string;
+    phonenumber?: string;
+    dayToStay?: string;
+    totalToPay?: string;
 }
