@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
             .pipe((takeUntil(this._unsubscribeAll)))
             .subscribe((user: User) => {
                 this.user = user;
-                console.log(this.user);
             });
     }
 }
