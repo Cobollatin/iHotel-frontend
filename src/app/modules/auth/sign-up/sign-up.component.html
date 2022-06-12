@@ -66,6 +66,9 @@
                 <mat-form-field class="w-full">
                     <mat-label>Company</mat-label>
                     <input id="company-confirm" matInput [formControlName]="'company'">
+                    <mat-error *ngIf="signUpForm.get('company').hasError('required')">
+                        Company name is required
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- ToS and PP -->
