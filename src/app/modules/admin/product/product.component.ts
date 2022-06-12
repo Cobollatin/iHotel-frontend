@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 export interface Products {
     id: number;
@@ -28,7 +28,7 @@ export class ProductComponent {
             name: 'Condones',
             price: 10,
             brand: 'Durex',
-            description: '3 Unidades, Los preservativos Durex Placer Prolongados, está elaborado con un lubricante especial que contiene benzocaína que ayuda al hombre a retardar el clímax y a prolongar el placer. Cuenta con forma anatómica. Largo 195 mm, Ancho nominal 56 mm, espesor 0.052 mm.',
+            description: '3 Unidades',
             stock: 3,
         },
         {
@@ -58,13 +58,13 @@ export class ProductComponent {
             price: this.addPrice,
             brand: this.addBrand,
             description: this.addDescription,
-            stock:this.addStock
+            stock: this.addStock
         });
         this.addProduct = '';
         this.addPrice = null;
         this.addBrand = '';
         this.addDescription = '';
-        this.addStock=null;
+        this.addStock = null;
         console.log(this.products);
     }
 }
