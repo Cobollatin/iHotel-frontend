@@ -12,11 +12,11 @@
         </mat-form-field>
         <mat-form-field class="ml-2 mt-5" appearance="outline">
             <mat-label>Employee's ID number</mat-label>
-            <input matInput placeholder="Employee's ID number" [(ngModel)]="newEmployee.identificationCard">
+            <input matInput placeholder="Employee's ID number"  type="number" min="0"  [(ngModel)]="newEmployee.identificationCard">
         </mat-form-field>
         <mat-form-field class="ml-2 mt-5" appearance="outline">
             <mat-label>Employee's phone number</mat-label>
-            <input matInput placeholder="Employee's address" [(ngModel)]="newEmployee.phoneNumber">
+            <input matInput placeholder="Employee's address" type="number" min="0"  [(ngModel)]="newEmployee.phoneNumber">
         </mat-form-field>
         <div style="display: inline-block" *ngIf="!updateEmployeeDrawer">
             <button id="add-button-employee" mat-raised-button class="ml-28 mt-2" (click)="addEmployee()">Register Employee</button>
