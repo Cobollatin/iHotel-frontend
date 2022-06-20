@@ -17,13 +17,6 @@ export interface Hotel {
     description: string;
     address: string;
 }
-export interface Employee {
-    id: number;
-    name: string;
-    identificationCard: string;
-    phoneNumber: string;
-    position: string;
-}
 export interface Room {
     id: number;
     hotelId: number;

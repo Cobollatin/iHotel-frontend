@@ -8,15 +8,15 @@
         </mat-form-field>
         <mat-form-field class="ml-2 mt-5" appearance="outline">
             <mat-label>Employee's position</mat-label>
-            <input matInput placeholder="Employee's position" [(ngModel)]="newEmployee.position">
+            <input matInput placeholder="Employee's position" [(ngModel)]="newEmployee.type">
         </mat-form-field>
         <mat-form-field class="ml-2 mt-5" appearance="outline">
             <mat-label>Employee's ID number</mat-label>
-            <input matInput placeholder="Employee's ID number"  type="number" min="0"  [(ngModel)]="newEmployee.identificationCard">
+            <input matInput placeholder="Employee's ID number" [(ngModel)]="newEmployee.dni">
         </mat-form-field>
         <mat-form-field class="ml-2 mt-5" appearance="outline">
             <mat-label>Employee's phone number</mat-label>
-            <input matInput placeholder="Employee's address" type="number" min="0"  [(ngModel)]="newEmployee.phoneNumber">
+            <input matInput placeholder="Employee's phone number" [(ngModel)]="newEmployee.phoneNumber">
         </mat-form-field>
         <div style="display: inline-block" *ngIf="!updateEmployeeDrawer">
             <button id="add-button-employee" mat-raised-button class="ml-28 mt-2" (click)="addEmployee()">Register Employee</button>
@@ -29,8 +29,8 @@
     <mat-card id="card-employee" class="ml-30 mt-10 w-200" *ngFor="let employee of employee">
         <h3>{{  employee.name }}</h3>
         <mat-list>
-            <h2>Position: :</h2><p><i>{{ employee.position }}</i></p>
-            <h2>ID Number:</h2><p><i>{{ employee.identificationCard }}</i></p>
+            <h2>Position: :</h2><p><i>{{ employee.type }}</i></p>
+            <h2>ID Number:</h2><p><i>{{ employee.dni }}</i></p>
             <h2>Phone Number: :</h2><p><i>{{ employee.phoneNumber }}</i></p>
         </mat-list>
         <button id="update-employee-button" mat-raised-button class="ml-40 mt-5" (click)="updateSelectionEmployee(employee)">Update Employee</button>
