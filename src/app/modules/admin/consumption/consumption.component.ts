@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import {Consumptions, Customers, Services} from '../components.model';
+import {Consumptions, Customers} from '../components.model';
+import {Services} from '../service/pages/service.component';
 
 
 
@@ -52,15 +53,18 @@ export class ConsumptionComponent
     services: Array<Services> = [
         {
             id: 0,
-            name: 'Cuarto una cama de una plaza'
+            name: 'Cuarto una cama de una plaza',
+            price: 15
         },
         {
             id: 1,
-            name: 'Cuarto una cama de dos plaza'
+            name: 'Cuarto una cama de dos plaza',
+            price: 15
         },
         {
             id: 2,
-            name: 'Almuerzo y desayuno'
+            name: 'Almuerzo y desayuno',
+            price: 15
         }
     ];
     numberCustomers: number = this.customers.length - 1;
