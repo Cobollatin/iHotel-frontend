@@ -61,7 +61,7 @@ export const appRoutes: Route[] = [
             { path: 'hotel', loadChildren: () => import('app/modules/admin/hotel/hotel.module').then(m => m.HotelModule) },
             { path: 'guest', loadChildren: () => import('app/modules/admin/guests/guests.module').then(m => m.GuestsModule) },
             { path: 'consumption', loadChildren: () => import('app/modules/admin/consumption/consumption.module').then(m => m.ConsumptionModule) },
-            { path: 'service', loadChildren: () => import('app/modules/admin/service/service.module').then(m => m.ServiceModule) },
+            { path: 'service', loadChildren: () => import('app/modules/admin/service/pages/service.module').then(m => m.ServiceModule) },
             { path: 'employee', loadChildren: () => import('app/modules/admin/employee/pages/employee.module').then(m => m.EmployeeModule) },
             { path: 'product', loadChildren: () => import('app/modules/admin/product/product.module').then(m => m.ProductModule) },
             { path: 'bill', loadChildren: () => import('app/modules/admin/bill/bill.module').then(m => m.BillModule) },

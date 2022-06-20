@@ -7,10 +7,6 @@ export interface Consumptions{
     customer: number;
     service: Array<number>;
 }
-export interface Services{
-    id: number;
-    name: string;
-}
 export interface Hotel {
     id: number;
     name: string;

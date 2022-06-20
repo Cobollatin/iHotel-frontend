@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Room} from '../components.model';
+import {ServiceService} from '../services/service.service';
 
 export interface Services{
     id: number;
@@ -15,42 +15,39 @@ export interface Services{
     encapsulation: ViewEncapsulation.None
 })
 
-export class ServiceComponent
+export class ServiceComponent implements OnInit
 {
-    addService: string = '';
+    newService: Services;
     updateServiceId: number = null;
     updateServiceDrawer: boolean = false;
-    addPrice: number = null;
-    services: Array<Services> = [
-        {
-            id: 0,
-            name: 'Cuarto una cama de una plaza',
-            price: 10,
-        },
-        {
-            id: 1,
-            name: 'Cuarto una cama de dos plaza',
-            price: 20,
-        },
-        {
-            id: 2,
-            name: 'Almuerzo y desayuno',
-            price: 30,
-        }
-    ];
+    services: Array<Services> = [];
     numberService: number = this.services.length - 1;
     selectService: Services;
 
-    constructor(private _snackBar: MatSnackBar) {}
+    constructor(private _snackBar: MatSnackBar, private serviceService: ServiceService) {}
+
+    ngOnInit(): any {
+        this.newService = {} as Services;
+        this.getAllServices();
+    }
+
+    getAllServices(): void{
+        this.serviceService.getAllService().subscribe((response: any) => {
+            this.services = response;
+        });
+    }
 
     addServiceName(): any {
-        if(this.addPrice !== null && this.addService !== '')
+        if(this.newService.price !== null && this.newService.name !== '')
         {
+            console.log(this.newService);
             this.numberService++;
-            this.services.push({id: this.numberService,name: this.addService, price: this.addPrice});
-            this.addService = '';
-            this.addPrice = null;
-            console.log(this.services);
+            this.newService.id = 0;
+            this.serviceService.createService(this.newService).subscribe((response: any) => {
+                this.services.push({...response});
+                this.services = this.services.map((o: any) => o);
+            });
+            this.newService = {} as Services;
         } else {
             this._snackBar.open('Data Invalid', 'Okay',{
                 duration: 3000,
@@ -62,21 +59,20 @@ export class ServiceComponent
 
     updateSelectionService(service: Services): any {
         this.updateServiceDrawer = true;
-        this.addService = service.name;
-        this.addPrice = service.price;
-        this.updateServiceId = service.id;
+        this.newService = service;
+
         this.selectService = {
             id: null,
-            name: this.addService,
-            price: this.addPrice,
+            name: this.newService.name,
+            price: this.newService.price,
         };
     }
     deleteService(service: Services): any {
         const confirmDelete = window.confirm(`¿Are you sure to delete ${service.name}?`);
 
         if(confirmDelete) {
-            this.services =  this.services.filter((value)=>{
-                if(value.id !== service.id) {return value;}
+            this.serviceService.deleteService(service.id).subscribe(()=>{
+                this.services = this.services.filter((o: Services) => o.id !== service.id ? o:  false);
             });
             this._snackBar.open('Service deleted', 'Okay',{
                 duration: 3000,
@@ -87,13 +83,14 @@ export class ServiceComponent
     }
 
     updateService(): any{
-        if(this.addPrice !== null && this.addService !== ''){
-            this.services = this.services.map((value: Services) =>{
-                if(value.id === this.updateServiceId){
-                    value.name = this.addService;
-                    value.price = this.addPrice;
-                }
-                return value;
+        if(this.newService.price !== null && this.newService.name !== ''){
+            this.serviceService.updateService(this.newService.id, this.newService).subscribe((response: any) => {
+                this.services = this.services.map((o: Services) => {
+                    if(o.id === response.id) {
+                        o = response;
+                    }
+                    return o;
+                });
             });
 
             this._snackBar.open('Service updated', 'Okay',{
@@ -103,9 +100,8 @@ export class ServiceComponent
             });
 
             this.updateServiceDrawer = false;
-            this.addService = '';
-            this.addPrice = null;
-            this.addPrice = null;
+            this.newService.name = '';
+            this.newService.price = null;
         }
         else{
             this.services = this.services.map((value: Services) =>{
@@ -133,9 +129,8 @@ export class ServiceComponent
             }
             return value;
         });
-        this.addService = '';
-        this.addPrice = null;
-        this.addPrice = null;
+        this.newService.name = '';
+        this.newService.price = null;
     }
 
 }
