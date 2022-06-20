@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import {Consumptions, Customers} from '../components.model';
-import {Services} from '../service/pages/service.component';
+import {Consumptions, Customers} from '../../components.model';
+import {Services} from '../../service/pages/service.component';
 
 
 
