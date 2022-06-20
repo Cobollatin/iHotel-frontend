@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Employee, Hotel, Room} from '../components.model';
+import {Hotel, Room} from '../components.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 

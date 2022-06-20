@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Employee, Room} from '../components.model';
+import {Room} from '../../components.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Employee} from '../model/employee.service';
+import {EmployeeService} from '../services/employee.service';
 
 
 
@@ -14,53 +16,36 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class EmployeeComponent implements OnInit {
     newEmployee: Employee;
     updateEmployeeDrawer: boolean = false;
-    employee: Array<Employee> = [
-        {
-            id: 1,
-            name: 'Marco Mendoza',
-            identificationCard: '85687535',
-            phoneNumber: '969874563',
-            position: 'Cleaning Staff',
-        },
-        {
-            id: 2,
-            name: 'Manuel Balta',
-            identificationCard: '85769335',
-            phoneNumber: '94485634',
-            position: 'Manager',
-        },
-        {
-            id: 3,
-            name: 'Nino Garcia',
-            identificationCard: '65348452',
-            phoneNumber: '93356427',
-            position: 'Housekeeper',
-        }
-    ];
+    employee: Array<Employee> = [];
     numberEmployee: number = this.employee.length - 1;
     selectEmployee: Employee;
 
-    constructor(private _snackBar: MatSnackBar) {}
+    constructor(private _snackBar: MatSnackBar, private employeeService: EmployeeService) {}
+
     ngOnInit(): any {
         this.newEmployee = {} as Employee;
+        this.getAllEmployees();
+    }
+
+    getAllEmployees(): void{
+        this.employeeService.getAllEmployee().subscribe((response: any) => {
+            this.employee = response;
+            });
     }
 
     addEmployee(): any {
         if((this.newEmployee.phoneNumber !== undefined && this.newEmployee.phoneNumber !== '')  && (this.newEmployee.name !== undefined && this.newEmployee.name !== '')
-            && (this.newEmployee.identificationCard !== undefined && this.newEmployee.identificationCard !== '') &&
-            (this.newEmployee.position !== undefined && this.newEmployee.position !== '')){
-            this.numberEmployee++;
+            && (this.newEmployee.dni !== undefined && this.newEmployee.dni !== '') &&
+            (this.newEmployee.type !== undefined && this.newEmployee.type !== '')){
             console.log(this.newEmployee);
-            this.employee.push({
-                id: this.numberEmployee,
-                name: this.newEmployee.name,
-                identificationCard: this.newEmployee.identificationCard,
-                phoneNumber: this.newEmployee.phoneNumber,
-                position: this.newEmployee.position
-            });
+            this.numberEmployee++;
+            this.newEmployee.id = 0;
+            this.employeeService.createEmployee(this.newEmployee).subscribe((response: any) => {
+                this.employee.push({...response});
+                this.employee = this.employee.map((o: any) => o);
+                });
             this.newEmployee = {} as Employee;
-            console.log(this.employee);
-        }else {
+        } else {
             this._snackBar.open('Data Invalid', 'Okay',{
                 duration: 3000,
                 horizontalPosition: 'end',
@@ -72,14 +57,16 @@ export class EmployeeComponent implements OnInit {
 
     updateEmployee(): any{
         if((this.newEmployee.phoneNumber !== undefined && this.newEmployee.phoneNumber !== '')  && (this.newEmployee.name !== undefined && this.newEmployee.name !== '')
-            && (this.newEmployee.identificationCard !== undefined && this.newEmployee.identificationCard !== '') &&
-            (this.newEmployee.position !== undefined && this.newEmployee.position !== '')){
-            this.employee = this.employee.map((value: Employee) =>{
-                if(value.id === this.newEmployee.id){
-                    value= this.newEmployee;
-                }
-                return value;
-            });
+            && (this.newEmployee.dni !== undefined && this.newEmployee.dni !== '') &&
+            (this.newEmployee.type !== undefined && this.newEmployee.type !== '')){
+            this.employeeService.updateEmployee(this.newEmployee.id, this.newEmployee).subscribe((response: any) => {
+                this.employee = this.employee.map((o: Employee) => {
+                    if(o.id === response.id) {
+                        o = response;
+                    }
+                    return o;
+                });
+            }) ;
 
             this._snackBar.open('Employee updated', 'Okay',{
                 duration: 3000,
@@ -94,9 +81,9 @@ export class EmployeeComponent implements OnInit {
             this.employee = this.employee.map((value: Employee) =>{
                 if(value.id === this.newEmployee.id){
                     value.name = this.selectEmployee.name;
-                    value.identificationCard = this.selectEmployee.identificationCard;
+                    value.dni = this.selectEmployee.dni;
                     value.phoneNumber = this.selectEmployee.phoneNumber;
-                    value.position = this.selectEmployee.position;
+                    value.type = this.selectEmployee.type;
                 }
                 return value;
             });
@@ -115,9 +102,9 @@ export class EmployeeComponent implements OnInit {
         this.employee = this.employee.map((value: Employee) =>{
             if(value.id === this.newEmployee.id){
                 value.name = this.selectEmployee.name;
-                value.identificationCard = this.selectEmployee.identificationCard;
+                value.dni = this.selectEmployee.dni;
                 value.phoneNumber = this.selectEmployee.phoneNumber;
-                value.position = this.selectEmployee.position;
+                value.type = this.selectEmployee.type;
             }
             return value;
         });
@@ -132,9 +119,9 @@ export class EmployeeComponent implements OnInit {
         this.selectEmployee = {
             id: null,
             name: this.newEmployee.name,
-            identificationCard: this.newEmployee.identificationCard,
+            dni: this.newEmployee.dni,
             phoneNumber: this.newEmployee.phoneNumber,
-            position: this.newEmployee.position
+            type: this.newEmployee.type
         };
     }
 
@@ -142,8 +129,9 @@ export class EmployeeComponent implements OnInit {
         const confirmDelete = window.confirm(`¿Are you sure to delete ${employee.name}?`);
 
         if(confirmDelete) {
-            this.employee =  this.employee.filter((value)=>{
-                if(value.id !== employee.id) {return value;}
+
+            this.employeeService.deleteEmployee(employee.id).subscribe(()=>{
+                this.employee = this.employee.filter((o: Employee) => o.id !== employee.id ? o:  false);
             });
             this._snackBar.open('Employee deleted', 'Okay',{
                 duration: 3000,
