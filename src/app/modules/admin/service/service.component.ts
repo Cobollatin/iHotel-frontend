@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Room} from "../components.model";
+import {Room} from '../components.model';
 
 export interface Services{
     id: number;

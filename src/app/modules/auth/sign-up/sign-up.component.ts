@@ -6,17 +6,16 @@ import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
-    selector     : 'auth-sign-up',
-    templateUrl  : './sign-up.component.html',
+    selector: 'auth-sign-up',
+    templateUrl: './sign-up.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : fuseAnimations
+    animations: fuseAnimations
 })
-export class AuthSignUpComponent implements OnInit
-{
+export class AuthSignUpComponent implements OnInit {
     @ViewChild('signUpNgForm') signUpNgForm: NgForm;
 
     alert: { type: FuseAlertType; message: string } = {
-        type   : 'success',
+        type: 'success',
         message: ''
     };
     signUpForm: FormGroup;
@@ -29,8 +28,7 @@ export class AuthSignUpComponent implements OnInit
         private _authService: AuthService,
         private _formBuilder: FormBuilder,
         private _router: Router
-    )
-    {
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -40,16 +38,15 @@ export class AuthSignUpComponent implements OnInit
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Create the form
         this.signUpForm = this._formBuilder.group({
-                name      : ['', Validators.required],
-                email     : ['', [Validators.required, Validators.email]],
-                password  : ['', Validators.required],
-                company   : [''],
-                agreements: ['', Validators.requiredTrue]
-            }
+            name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', Validators.required],
+            company: ['', Validators.required],
+            agreements: ['', Validators.requiredTrue]
+        }
         );
     }
 
@@ -60,13 +57,19 @@ export class AuthSignUpComponent implements OnInit
     /**
      * Sign up
      */
-    signUp(): void
-    {
+    signUp(): void {
         // Do nothing if the form is invalid
-        if ( this.signUpForm.invalid )
-        {
+        if (this.signUpForm.invalid) {
+            if (this.signUpForm.controls.agreements.invalid) {
+                this.alert = {
+                    type: 'error',
+                    message: 'Please accept the terms and conditions.'
+                };
+                this.showAlert = true;
+            }
             return;
         }
+
 
         // Disable the form
         this.signUpForm.disable();
@@ -83,21 +86,23 @@ export class AuthSignUpComponent implements OnInit
                     this._router.navigateByUrl('/confirmation-required');
                 },
                 (response) => {
+                    console.log(response);
 
                     // Re-enable the form
                     this.signUpForm.enable();
 
                     // Reset the form
-                    this.signUpNgForm.resetForm();
+                    // this.signUpNgForm.resetForm();
 
                     // Set the alert
                     this.alert = {
-                        type   : 'error',
-                        message: 'Something went wrong, please try again.'
+                        type: 'error',
+                        message: response.error
                     };
 
                     // Show the alert
                     this.showAlert = true;
+
                 }
             );
     }

@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {TranslocoModule} from "@ngneat/transloco";
+import {TranslocoModule} from '@ngneat/transloco';
 
 const exampleRoutes: Route[] = [
     {
