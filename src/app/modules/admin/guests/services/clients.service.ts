@@ -1,19 +1,21 @@
 import {Injectable} from '@angular/core';
+import {catchError, map, Observable, retry, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, Observable, retry, throwError} from 'rxjs';
-import {Services} from '../pages/service.component';
+import {Clients} from "../model/clients.service";
+import {Product} from "../../product/model/product.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class ServiceService {
-    basePath = 'http://localhost:5000/benefits';
+export class ClientsService {
+
+    basePath = 'http://localhost:5000/clients';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-
+    clients: Clients[]
     constructor(private http: HttpClient) { }
 
     handleError(error: HttpErrorResponse) {
@@ -25,31 +27,30 @@ export class ServiceService {
         return throwError( ()  => new Error('Something happened with request, please try again later'));
     }
 
-    getAllService(): Observable<Services> {
-        return this.http.get<Services>(this.basePath, this.httpOptions)
-            .pipe(
-                retry(2),
-                catchError(this.handleError)
-            );
+    public getAllClients(): Observable<Clients>{
+        return this.http.get<Clients>(this.basePath, this.httpOptions)
+        .pipe(
+            retry(2),
+            catchError(this.handleError)
+        );
     }
 
-    deleteService(id: any) {
+    deleteClient(id: any) {
         return this.http.delete(`${this.basePath}/${id}`, this.httpOptions)
-            .pipe(
-                retry(2),
-                catchError(this.handleError)
-            );
-    }
-
-    updateService(id: any, item: any): Observable<Services> {
-        return this.http.put<Services>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
             .pipe(
                 retry(2),
                 catchError(this.handleError));
     }
 
-    createService(item: any): Observable<Services> {
-        return this.http.post<Services>(this.basePath, JSON.stringify(item), this.httpOptions)
+    updateClient(id: any, item: any): Observable<Clients> {
+        return this.http.put<Clients>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+            .pipe(
+                retry(2),
+                catchError(this.handleError));
+    }
+
+    createClient(item: any): Observable<Clients> {
+        return this.http.post<Clients>(this.basePath, JSON.stringify(item), this.httpOptions)
             .pipe(
                 retry(2),
                 catchError(this.handleError)

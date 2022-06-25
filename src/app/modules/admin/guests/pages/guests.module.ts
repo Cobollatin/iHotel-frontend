@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { GuestsComponent } from 'app/modules/admin/guests/guests.component';
+import { GuestsComponent } from 'app/modules/admin/guests/pages/guests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatCardModule} from "@angular/material/card";
 const exampleRoutes: Route[] = [
     {
         path     : '',
@@ -43,7 +45,9 @@ const exampleRoutes: Route[] = [
         CommonModule,
         MatInputModule,
         MatSelectModule,
-        FormsModule
+        MatSnackBarModule,
+        FormsModule,
+        MatCardModule
     ]
 })
 export class GuestsModule

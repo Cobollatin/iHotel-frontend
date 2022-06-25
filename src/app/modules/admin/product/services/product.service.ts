@@ -9,7 +9,7 @@ import {Product} from "../model/product.service";
 
 export class ProductService {
 
-    basePath = 'http://localhost:8891/products';
+    basePath = 'http://localhost:5000/products';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

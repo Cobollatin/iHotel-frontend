@@ -59,7 +59,7 @@ export const appRoutes: Route[] = [
         children: [
             { path: 'home', loadChildren: () => import('app/modules/admin/home/home.module').then(m => m.HomeModule) },
             { path: 'hotel', loadChildren: () => import('app/modules/admin/hotel/hotel.module').then(m => m.HotelModule) },
-            { path: 'guest', loadChildren: () => import('app/modules/admin/guests/guests.module').then(m => m.GuestsModule) },
+            { path: 'guest', loadChildren: () => import('app/modules/admin/guests/pages/guests.module').then(m => m.GuestsModule) },
             { path: 'consumption', loadChildren: () => import('app/modules/admin/consumption/pages/consumption.module').then(m => m.ConsumptionModule) },
             { path: 'service', loadChildren: () => import('app/modules/admin/service/pages/service.module').then(m => m.ServiceModule) },
             { path: 'employee', loadChildren: () => import('app/modules/admin/employee/pages/employee.module').then(m => m.EmployeeModule) },
