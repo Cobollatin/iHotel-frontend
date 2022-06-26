@@ -8,7 +8,7 @@ import {Services} from '../pages/service.component';
 })
 
 export class ServiceService {
-    basePath = 'http://localhost:8891/benefits';
+    basePath = 'http://localhost:5000/benefits';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

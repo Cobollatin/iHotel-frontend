@@ -31,11 +31,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
         link : '/guest'
     },
     {
-        id   : 'consumption',
-        title: 'Consumption',
+        id   : 'reservation',
+        title: 'Reservation',
         type : 'basic',
         icon : 'heroicons_outline:shopping-cart',
-        link : '/consumption'
+        link : '/reservation'
     },
     {
         id   : 'service',

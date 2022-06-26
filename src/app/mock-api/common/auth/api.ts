@@ -66,7 +66,7 @@ export class AuthMockApi {
             .reply(({ request }) => new Observable((suscriber) => {
                 const { email, password } = request.body;
                 const accessToken = this._generateJWTToken();
-                return this._httpClient.post('https://api.extraahorro.tk/login', { email, password, accessToken }).subscribe(
+                return this._httpClient.post('https://easycloud-backend.azurewebsites.net/login', { email, password, accessToken }).subscribe(
                     (response) => {
                         if (response['status'] === 'success') {
                             this._user = cloneDeep(response['payload']['user']);
