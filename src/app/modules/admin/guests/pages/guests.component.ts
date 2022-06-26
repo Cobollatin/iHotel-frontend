@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegisterComponent } from './dialog/dialog.component';
-import {ClientsService} from "../services/clients.service";
-import {Clients} from "../model/clients.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { ClientsService } from '../services/clients.service';
+import { Clients } from '../model/clients';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,25 +14,22 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class GuestsComponent implements OnInit {
 
-     newClient: Clients;
-     guests: Array<Clients> = []
-    numberGuests: number = this.guests.length - 1;
+    guests: Clients[] = [];
+    newClient: Clients = {};
+    numberGuests: number = 0;
     updateGuestDrawer: boolean = false;
-    selectGuest : Clients;
+    selectGuest: Clients;
     constructor(private _snackBar: MatSnackBar, private dialog: MatDialog, private clientsService: ClientsService) {
     }
 
     ngOnInit(): void {
-        this.newClient = {} as Clients;
-        this.getAllGuests();
-    }
-
-    getAllGuests(): void {
         this.clientsService.getAllClients().subscribe((response: any) => {
+            console.log(response);
             this.guests = response.content;
-            console.log(this.guests);
+            this.numberGuests = this.guests.length - 1;
         });
     }
+
     openDialogRegister(): void {
         this.dialog.open(RegisterComponent, {
             width: '35rem',
@@ -40,41 +37,57 @@ export class GuestsComponent implements OnInit {
         });
     }
     addGuest(): any {
-        if((this.newClient.name !== undefined && this.newClient.name !== '') && (this.newClient.surname !== undefined && this.newClient.surname !== '')
-            // eslint-disable-next-line max-len
-            &&  (this.newClient.dni !== undefined && this.newClient.dni !== null) &&  (this.newClient.address !== undefined && this.newClient.address !== null) && (this.newClient.email !== undefined && this.newClient.email !== null)
-            && (this.newClient.phoneNumber !== undefined && this.newClient.phoneNumber !== null)     ) {
-            console.log(this.newClient);
-            this.numberGuests++;
-            this.newClient.id = 0;
-            this.clientsService.createClient(this.newClient).subscribe((response: any) => {
-                this.guests.push({...response});
-                this.guests = this.guests.map((o: any) => o);
-            });
-            this.newClient = {} as Clients;
-        } else {
-            this._snackBar.open('Data Invalid', 'Okay',{
-                duration: 3000,
-                horizontalPosition: 'end',
-                verticalPosition: 'top'
-            });
-        }
+        // if ((this.newClient.name !== undefined && this.newClient.name !== '') && (this.newClient.surname !== undefined && this.newClient.surname !== '')
+        //     // eslint-disable-next-line max-len
+        //     && (this.newClient.dni !== undefined && this.newClient.dni !== null) &&
+        // (this.newClient.address !== undefined && this.newClient.address !== null) && (this.newClient.email !== undefined && this.newClient.email !== null)
+        //     && (this.newClient.phoneNumber !== undefined && this.newClient.phoneNumber !== null)) {
+        //     console.log(this.newClient);
+        //     this.numberGuests++;
+        //     this.newClient.id = 0;
+        //     this.clientsService.createClient(this.newClient).subscribe((response: any) => {
+        //         this.guests.push({ ...response });
+        //         this.guests = this.guests.map((o: any) => o);
+        //     });
+        //     this.newClient = {} as Clients;
+        // } else {
+        //     this._snackBar.open('Data Invalid', 'Okay', {
+        //         duration: 3000,
+        //         horizontalPosition: 'end',
+        //         verticalPosition: 'top'
+        //     });
+        // }
+        this.clientsService.createClient(this.newClient).subscribe((response: any) => {
+            console.log(response);
+            this.guests.push({ ...response });
+            this.guests = this.guests.map((o: any) => o);
+        });
+
+        const dlg = this.dialog.open(RegisterComponent, {
+            width: '35rem',
+            data: {
+                actionButton: 'Save',
+                client: this.newClient
+            }
+        }).afterClosed().subscribe((response: any) => {
+            console.log('f');
+        });
     }
 
     updateGuest(): any {
-        if((this.newClient.name !== undefined && this.newClient.name !== '') && (this.newClient.surname !== undefined && this.newClient.surname !== '')
+        if ((this.newClient.name !== undefined && this.newClient.name !== '') && (this.newClient.surname !== undefined && this.newClient.surname !== '')
             // eslint-disable-next-line max-len
-            &&  (this.newClient.dni !== undefined && this.newClient.dni !== null) &&  (this.newClient.address !== undefined && this.newClient.address !== null) && (this.newClient.email !== undefined && this.newClient.email !== null)
-            && (this.newClient.phoneNumber !== undefined && this.newClient.phoneNumber !== null)     ) {
+            && (this.newClient.dni !== undefined && this.newClient.dni !== null) && (this.newClient.address !== undefined && this.newClient.address !== null) && (this.newClient.email !== undefined && this.newClient.email !== null)
+            && (this.newClient.phoneNumber !== undefined && this.newClient.phoneNumber !== null)) {
             this.clientsService.updateClient(this.newClient.id, this.newClient).subscribe((response: any) => {
                 this.guests = this.guests.map((o: Clients) => {
-                    if(o.id === response.id) {
+                    if (o.id === response.id) {
                         o = response;
                     }
                     return o;
                 });
             });
-            this._snackBar.open('Guest updated', 'Okay',{
+            this._snackBar.open('Guest updated', 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'end',
                 verticalPosition: 'top'
@@ -86,7 +99,7 @@ export class GuestsComponent implements OnInit {
         else {
 
             this.guests = this.guests.map((value: Clients) => {
-                if(value.id === this.newClient.id) {
+                if (value.id === this.newClient.id) {
                     value.name = this.selectGuest.name;
                     value.dni = this.selectGuest.dni;
                     value.email = this.selectGuest.email;
@@ -96,7 +109,7 @@ export class GuestsComponent implements OnInit {
                 }
                 return value;
             });
-            this._snackBar.open('Data Invalid', 'Okay',{
+            this._snackBar.open('Data Invalid', 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'end',
                 verticalPosition: 'top'
@@ -108,7 +121,7 @@ export class GuestsComponent implements OnInit {
     cancelUpdateGuest(): any {
         this.updateGuestDrawer = false;
         this.guests = this.guests.map((value: Clients) => {
-            if(value.id === this.newClient.id) {
+            if (value.id === this.newClient.id) {
                 value.name = this.selectGuest.name;
                 value.dni = this.selectGuest.dni;
                 value.email = this.selectGuest.email;
@@ -123,39 +136,30 @@ export class GuestsComponent implements OnInit {
 
     updateSelectionGuest(clients: Clients): any {
         this.updateGuestDrawer = true;
-        this.newClient =  clients;
+        this.newClient = clients;
 
         this.selectGuest = {
             id: null,
             name: this.newClient.name,
             surname: this.newClient.surname,
             email: this.newClient.email,
-            address:this.newClient.address,
-            dni:this.newClient.dni,
-            phoneNumber:this.newClient.phoneNumber,
+            address: this.newClient.address,
+            dni: this.newClient.dni,
+            phoneNumber: this.newClient.phoneNumber,
         };
     }
     deleteGuestConfirmation(guest: Clients): any {
         const confirmDelete = window.confirm(`¿Are you sure to delete ${guest.name}?`);
 
-        if(confirmDelete) {
-            this.clientsService.deleteClient(guest.id).subscribe(()=>{
-                this.guests = this.guests.filter((o: Clients) => o.id !== guest.id ? o:  false);
+        if (confirmDelete) {
+            this.clientsService.deleteClient(guest.id).subscribe(() => {
+                this.guests = this.guests.filter((o: Clients) => o.id !== guest.id ? o : false);
             });
-            this._snackBar.open('Client deleted', 'Okay',{
+            this._snackBar.open('Client deleted', 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'end',
                 verticalPosition: 'top'
             });
         }
-    }
-
-    openDialogUpdate(id: any): void{
-        //Obtener la data mediante el id antes de pasar al al Dialog component
-        console.log(this.guests[id].id);
-        this.dialog.open(RegisterComponent, {
-            width: '35rem',
-            data: this.guests[id],
-        });
     }
 }

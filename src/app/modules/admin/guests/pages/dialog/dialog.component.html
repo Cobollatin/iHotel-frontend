@@ -6,75 +6,37 @@
             <input matInput placeholder="Name" formControlName="name" required>
             <!--<mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>-->
         </mat-form-field>
+
+        <mat-form-field class="inputRegister" appearance="outline">
+            <mat-label>Enter your name</mat-label>
+            <input matInput placeholder="Surname" formControlName="surname" required>
+            <!--<mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>-->
+        </mat-form-field>
+
+        <mat-form-field class="inputRegister" appearance="outline">
+            <mat-label>Enter your name</mat-label>
+            <input matInput placeholder="Address" formControlName="address" required>
+            <!--<mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>-->
+        </mat-form-field>
         <mat-form-field class="inputRegister" appearance="outline">
             <mat-label>Enter your ID CARD / Passport</mat-label>
-            <input matInput placeholder="Id card / passport" type="number" min="0" formControlName="idCard" required>
+            <input matInput placeholder="Id card / passport" type="number" min="0" formControlName="dni" required>
             <!-- <mat-error *ngIf="idCard.invalid">{{getErrorMessage(idCard)}}</mat-error>-->
-         </mat-form-field>
-         <mat-form-field class="inputRegister" appearance="outline">
-             <mat-label>Enter your phone number</mat-label>
-             <input matInput placeholder="Phone number" type="number" min="0"  formControlName="phone" required>
-             <!--  <mat-error *ngIf="phone.invalid">{{getErrorMessage(phone)}}</mat-error>-->
-           </mat-form-field>
-           <mat-form-field class="inputRegister" appearance="outline">
-               <mat-label>Enter your email</mat-label>
-               <input matInput placeholder="Email" formControlName="email" required>
-               <!--  <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>-->
-             </mat-form-field>
+        </mat-form-field>
+        <mat-form-field class="inputRegister" appearance="outline">
+            <mat-label>Enter your phone number</mat-label>
+            <input matInput placeholder="Phone number" type="number" min="0" formControlName="phoneNumber" required>
+            <!--  <mat-error *ngIf="phone.invalid">{{getErrorMessage(phone)}}</mat-error>-->
+        </mat-form-field>
+        <mat-form-field class="inputRegister" appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+            <!--  <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>-->
+        </mat-form-field>>
+    </form>
 
-
-              <mat-form-field appearance="fill">
-                <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input formControlName="reservationStart" matStartDate placeholder="Start date">
-                  <input formControlName="reservationEnd" matEndDate placeholder="End date">
-                </mat-date-range-input>
-                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-
-
-              <mat-form-field class="inputRegister" appearance="fill">
-                <mat-label>Select categorie</mat-label>
-                <mat-select formControlName="roomCategory"  name="categorie">
-                    <mat-option *ngFor="let categorie of categories" [value]="categorie.value">
-                        {{categorie.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-             <mat-form-field class="inputRegister" appearance="fill">
-                 <mat-label>N° Beds</mat-label>
-                 <mat-select formControlName="numberOfBeds" name="bed">
-                     <mat-option *ngFor="let bed of beds" [value]="bed.value">
-                         {{bed.viewValue}}
-                     </mat-option>
-                 </mat-select>
-             </mat-form-field>
-             <mat-form-field class="inputRegister" appearance="fill">
-                 <mat-label>N° Rooms</mat-label>
-                 <mat-select formControlName="numberOfRooms"  name="numberOfRooms">
-                     <mat-option *ngFor="let room of rooms" [value]="room.value">
-                         {{room.viewValue}}
-                     </mat-option>
-                 </mat-select>
-             </mat-form-field>
-             <mat-form-field class="inputRegister" appearance="fill">
-                <mat-label>N° Bathrooms</mat-label>
-                <mat-select formControlName="numberOfBathrooms"  name="bathroom">
-                    <mat-option *ngFor="let bathroom of bathrooms" [value]="bathroom.value">
-                        {{bathroom.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-
-
-         </form>
-
-     </div>
-     <div mat-dialog-actions [align]="'end'">
-         <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-         <button style="margin-left: 1rem;" mat-raised-button color="primary" (click)="registerGuest()">{{actionButton}}</button>
-     </div>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 1rem;" mat-raised-button color="primary" (click)="action()">{{actionButton}}</button>
+</div>
