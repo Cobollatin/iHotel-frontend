@@ -131,7 +131,7 @@ export class AuthMockApi {
         this._fuseMockApiService
             .onPost('api/auth/sign-up', 1500)
             .reply(({ request }) => new Observable((suscriber) => {
-                this._httpClient.post('https://api.extraahorro.tk/register', request.body).subscribe(
+                this._httpClient.post('https://extraahorro.azurewebsites.net/register', request.body).subscribe(
                     (response) => {
                         if (response['status'] === 'success') {
                             suscriber.next(
