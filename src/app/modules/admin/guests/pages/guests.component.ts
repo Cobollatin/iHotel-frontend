@@ -57,11 +57,11 @@ export class GuestsComponent implements OnInit {
         //         verticalPosition: 'top'
         //     });
         // }
-        this.clientsService.createClient(this.newClient).subscribe((response: any) => {
-            console.log(response);
-            this.guests.push({ ...response });
-            this.guests = this.guests.map((o: any) => o);
-        });
+        //this.clientsService.createClient(this.newClient).subscribe((response: any) => {
+          //  console.log(response);
+//            this.guests.push({ ...response });
+  //          this.guests = this.guests.map((o: any) => o);
+    //    });
 
         const dlg = this.dialog.open(RegisterComponent, {
             width: '35rem',
