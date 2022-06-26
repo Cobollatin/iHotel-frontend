@@ -68,6 +68,7 @@ export class UserComponent implements OnInit, OnDestroy {
      * Sign out
      */
     signOut(): void {
+        localStorage.removeItem('user');
         this._router.navigate(['/sign-out']);
     }
     showProfile(): void {
