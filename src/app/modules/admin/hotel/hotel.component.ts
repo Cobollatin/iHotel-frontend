@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Hotel} from '../components.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {HotelService} from "./services/hotel.service";
 
 
 @Component({
@@ -36,22 +37,35 @@ export class HotelComponent implements OnInit{
     ];
     numberHotels: number = this.hotels.length - 1;
 
-    constructor(private _snackBar: MatSnackBar) {}
+    constructor(private _snackBar: MatSnackBar, private _hotelService: HotelService) {
+    }
 
     ngOnInit(): any {
         this.hotel = {} as Hotel;
+        this._hotelService.getAllHotels().subscribe((response: any) => {
+            this.hotels = response;
+        });
     }
 
     addHotel(): any {
          if(this.hotel.name !== undefined && this.hotel.description !== undefined && this.hotel.address !== undefined){
             this.numberHotels++;
-            this.hotels.push({
-                id: this.numberHotels,
+            const hotel = {
+                businessId: 1,
+                administratorId: 1,
                 name: this.hotel.name,
-                description: this.hotel.description,
                 address: this.hotel.address
+            };
+            this._hotelService.createHotel(hotel).subscribe((response: any) => {
+                console.log(response);
+                this.hotels.push({
+                    id: response.id,
+                    name: this.hotel.name,
+                    description: this.hotel.description,
+                    address: this.hotel.address
+                });
+                this.hotel = {} as Hotel;
             });
-            this.hotel = {} as Hotel;
         } else {
              this._snackBar.open('Data Invalid', 'Okay',{
                  duration: 3000,
@@ -62,8 +76,10 @@ export class HotelComponent implements OnInit{
     }
 
     deleteHotel(hotel: Hotel): any {
-        this.hotels =  this.hotels.filter((value)=>{
-            if(value.id !== hotel.id) {return value;}
+        this._hotelService.deleteHotel(hotel.id).subscribe((response: any) => {
+            this.hotels =  this.hotels.filter((value)=>{
+                if(value.id !== hotel.id) {return value;}
+            });
         });
         this._snackBar.open('Hotel deleted', 'Okay',{
             duration: 3000,
@@ -81,7 +97,6 @@ export class HotelComponent implements OnInit{
                 }
                 return value;
             });
-
             this._snackBar.open('Hotel updated', 'Okay',{
                 duration: 3000,
                 horizontalPosition: 'end',

@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Hotel, Room} from '../components.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {RoomService} from "./services/room.service";
+import {HotelService} from "../hotel/services/hotel.service";
 
 
 
@@ -16,7 +18,7 @@ export class RoomComponent implements OnInit {
     selectHotel: Hotel;
     selectTypeRoom: any;
     selectRoom: Room;
-    hotels: Array<Hotel> = [
+    hotels: any = [
         {
             id: 0,
             name: 'Hotel el Cielo',
@@ -36,7 +38,7 @@ export class RoomComponent implements OnInit {
             address: 'AV. Arequipa 7085, Cercado de Lima'
         }
     ];
-    roomType: Array<any> = [
+    roomType: any = [
         {
             id: 0,
             name: 'Matrimonial',
@@ -76,7 +78,7 @@ export class RoomComponent implements OnInit {
             ]
         }
     ];
-    rooms: Array<Room> = [
+    rooms: any = [
         {
             id: 0,
             hotelId: 0,
@@ -113,24 +115,41 @@ export class RoomComponent implements OnInit {
     numberRooms: number = this.rooms.length - 1;
     updateRoomDrawer: boolean = false;
 
-    constructor(private _snackBar: MatSnackBar) {}
+    constructor(private _snackBar: MatSnackBar, private roomService: RoomService, private hotelService: HotelService) {}
 
     ngOnInit(): any {
         this.newRoom = {} as Room;
         this.selectHotel = {} as Hotel;
+        this.hotelService.getAllHotels().subscribe((response: any) => {
+            this.hotels = response;
+        });
+        this.roomService.getAllRooms().subscribe((response: any) => {
+            this.rooms = response;
+            this.rooms = this.rooms.map( (room: any) => {
+                const newRoom = {
+                    id: room.id,
+                    hotelId: room.hotelId,
+                    roomTypeId: room.type,
+                    roomNumber: room.number,
+                    floor: room.capacity
+                };
+                return newRoom;
+            });
+        });
     }
 
-    deleteRoomConfirmation(room): any{
+    deleteRoomConfirmation(room): any {
         const confirmDelete = window.confirm(`¿Are you sure to delete Room ${room.roomNumber}?`);
-
         if(confirmDelete) {
             this.deleteRoom(room);
         }
     }
 
     deleteRoom(room): any{
-        this.rooms =  this.rooms.filter((value)=>{
-            if(value.id !== room.id) {return value;}
+        this.roomService.deleteRoom(room.id).subscribe((response: any) => {
+            this.rooms =  this.rooms.filter((value)=>{
+                if(value.id !== room.id) {return value;}
+            });
         });
         this._snackBar.open('Room deleted', 'Okay',{
             duration: 3000,
@@ -140,18 +159,28 @@ export class RoomComponent implements OnInit {
     }
 
     addRoom(): any{
-        console.log(this.selectTypeRoom);
         if(this.newRoom.roomNumber !== undefined && this.selectTypeRoom !== undefined && this.newRoom.floor !== undefined){
             this.numberRooms++;
-            this.rooms.push({
+            const newRoom = {
                 id: this.numberRooms,
                 hotelId: this.selectHotel.id,
                 roomTypeId: this.selectTypeRoom.id,
                 roomNumber: this.newRoom.roomNumber,
                 floor: this.newRoom.floor
+            };
+            const dbRoom = {
+                'number': this.newRoom.roomNumber,
+                'capacity': 20,
+                'type': this.selectTypeRoom.name,
+                'status': 'available',
+                'hotelId': this.selectHotel.id,
+            };
+            this.roomService.createRoom(dbRoom).subscribe((response: any) => {
+                this.rooms.push(newRoom);
+                console.log(this.rooms);
+                this.newRoom = {} as Room;
+                this.selectTypeRoom = undefined;
             });
-            this.newRoom = {} as Room;
-            this.selectTypeRoom = undefined;
         } else {
             this._snackBar.open('Data Invalid', 'Okay',{
                 duration: 3000,
@@ -164,12 +193,11 @@ export class RoomComponent implements OnInit {
     updateSelectionRoom(room): any {
         this.updateRoomDrawer = true;
         this.newRoom = room;
-        this.roomType.forEach((value)=>{
+        this.roomType.forEach( (value) => {
             if( room.roomTypeId === value.id){
                 this.selectTypeRoom = value;
             }
         });
-
         this.selectRoom = {
             id: null,
             hotelId: this.newRoom.hotelId,
@@ -188,7 +216,6 @@ export class RoomComponent implements OnInit {
                 }
                 return value;
             });
-
             this._snackBar.open('Room updated', 'Okay',{
                 duration: 3000,
                 horizontalPosition: 'end',
