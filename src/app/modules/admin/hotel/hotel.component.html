@@ -37,7 +37,7 @@
     <mat-card id="card-hotel" class="ml-30 mt-10 w-200" *ngFor="let hotel of hotels">
         <h3>{{ hotel.name }}</h3>
         <mat-list>
-            <h2 *transloco="let t">{{ t('hotel-description') }}:</h2>
+            <h2 *transloco="let t">{{ t('hotel-description') }}</h2>
             <p><i >{{ hotel.description }}</i></p>
             <h2 *transloco="let t">{{ t('hotel-address') }}</h2>
             <p><i>{{ hotel.address }}</i></p>

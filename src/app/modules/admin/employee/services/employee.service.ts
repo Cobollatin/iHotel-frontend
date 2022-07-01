@@ -9,7 +9,7 @@ import {Employee} from '../model/employee.service';
 
 export class EmployeeService {
 
-    basePath = 'http://localhost:8891/employees';
+    basePath = 'http://ihotel-env.eba-9m5kbriv.us-east-1.elasticbeanstalk.com/employees';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

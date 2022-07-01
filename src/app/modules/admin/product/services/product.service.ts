@@ -9,7 +9,7 @@ import {Product} from "../model/product.service";
 
 export class ProductService {
 
-    basePath = 'http://localhost:5000/products';
+    basePath = 'http://ihotel-env.eba-9m5kbriv.us-east-1.elasticbeanstalk.com/products';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

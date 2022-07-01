@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:5000'
+    apiUrl: 'http://ihotel-env.eba-9m5kbriv.us-east-1.elasticbeanstalk.com'
 };
 
 /*

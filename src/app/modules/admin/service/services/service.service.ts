@@ -8,7 +8,7 @@ import {Services} from '../pages/service.component';
 })
 
 export class ServiceService {
-    basePath = 'http://localhost:5000/benefits';
+    basePath = 'http://ihotel-env.eba-9m5kbriv.us-east-1.elasticbeanstalk.com/benefits';
 
     httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {Clients} from "../../guests/model/clients";
 import {Hotel} from '../Model/hotel';
 
 @Injectable({
