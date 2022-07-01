@@ -15,11 +15,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class GuestsComponent implements OnInit {
 
     guests: Clients[] = [];
-    newClient: Clients = {};
+    newClient: Clients;
     numberGuests: number = 0;
     updateGuestDrawer: boolean = false;
     selectGuest: Clients;
     constructor(private _snackBar: MatSnackBar, private dialog: MatDialog, private clientsService: ClientsService) {
+        this.newClient = {} as Clients;
     }
 
     ngOnInit(): void {
@@ -36,33 +37,16 @@ export class GuestsComponent implements OnInit {
 
         });
     }
-    addGuest(): any {
-        // if ((this.newClient.name !== undefined && this.newClient.name !== '') && (this.newClient.surname !== undefined && this.newClient.surname !== '')
-        //     // eslint-disable-next-line max-len
-        //     && (this.newClient.dni !== undefined && this.newClient.dni !== null) &&
-        // (this.newClient.address !== undefined && this.newClient.address !== null) && (this.newClient.email !== undefined && this.newClient.email !== null)
-        //     && (this.newClient.phoneNumber !== undefined && this.newClient.phoneNumber !== null)) {
-        //     console.log(this.newClient);
-        //     this.numberGuests++;
-        //     this.newClient.id = 0;
-        //     this.clientsService.createClient(this.newClient).subscribe((response: any) => {
-        //         this.guests.push({ ...response });
-        //         this.guests = this.guests.map((o: any) => o);
-        //     });
-        //     this.newClient = {} as Clients;
-        // } else {
-        //     this._snackBar.open('Data Invalid', 'Okay', {
-        //         duration: 3000,
-        //         horizontalPosition: 'end',
-        //         verticalPosition: 'top'
-        //     });
-        // }
+
+    addGuestTrue(): any {
+        console.log(this.newClient);
         this.clientsService.createClient(this.newClient).subscribe((response: any) => {
             console.log(response);
             this.guests.push({ ...response });
             this.guests = this.guests.map((o: any) => o);
         });
-
+    }
+    addGuest(): any {
         const dlg = this.dialog.open(RegisterComponent, {
             width: '35rem',
             data: {
@@ -70,7 +54,7 @@ export class GuestsComponent implements OnInit {
                 client: this.newClient
             }
         }).afterClosed().subscribe((response: any) => {
-            console.log('f');
+            console.log('cerro');
         });
     }
 

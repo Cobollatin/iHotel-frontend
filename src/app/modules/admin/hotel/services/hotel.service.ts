@@ -30,7 +30,7 @@ export class HotelService {
       return this.http.post<Hotel>(this.basePath, JSON.stringify(hotel), this.httpOptions);
     }
     updateHotel(id: any, hotel: Hotel): any {
-      return this.http.put<Hotel>(`this.basePath/${id}`, JSON.stringify(hotel), this.httpOptions)
+      return this.http.put<Hotel>(`${this.basePath}/${id}`, JSON.stringify(hotel), this.httpOptions)
           .pipe(
               retry(2),
               catchError(this.handleError));

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Hotel} from '../components.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {HotelService} from "./services/hotel.service";
+import {HotelService} from './services/hotel.service';
 
 
 @Component({
@@ -15,26 +15,7 @@ export class HotelComponent implements OnInit{
     hotel: Hotel;
     modifyHotelDrawer: boolean = false;
     selectHotel: Hotel;
-    hotels: Array<Hotel> = [
-        {
-            id: 0,
-            name: 'Hotel el Cielo',
-            description: 'El primero del gran imperio',
-            address: 'AV. Arequipa 7085, Cercado de Lima'
-        },
-        {
-            id: 1,
-            name: 'Hotel el Cielo 2',
-            description: 'El segundo del gran imperio',
-            address: 'AV. Arequipa 7085, Cercado de Lima'
-        },
-        {
-            id: 2,
-            name: 'Hotel el Cielo 3',
-            description: 'El tercero del gran imperio',
-            address: 'AV. Arequipa 7085, Cercado de Lima'
-        }
-    ];
+    hotels: Array<Hotel> = [];
     numberHotels: number = this.hotels.length - 1;
 
     constructor(private _snackBar: MatSnackBar, private _hotelService: HotelService) {
@@ -44,11 +25,12 @@ export class HotelComponent implements OnInit{
         this.hotel = {} as Hotel;
         this._hotelService.getAllHotels().subscribe((response: any) => {
             this.hotels = response;
+            console.log(this.hotels);
         });
     }
 
     addHotel(): any {
-         if(this.hotel.name !== undefined && this.hotel.description !== undefined && this.hotel.address !== undefined){
+         if(this.hotel.name !== undefined && this.hotel.address !== undefined){
             this.numberHotels++;
             const hotel = {
                 businessId: 1,
@@ -61,7 +43,6 @@ export class HotelComponent implements OnInit{
                 this.hotels.push({
                     id: response.id,
                     name: this.hotel.name,
-                    description: this.hotel.description,
                     address: this.hotel.address
                 });
                 this.hotel = {} as Hotel;
@@ -91,11 +72,13 @@ export class HotelComponent implements OnInit{
     updateHotel(): any{
 
         if(this.hotel.name !== ''){
-            this.hotels = this.hotels.map((value: Hotel) =>{
-                if(value.id === this.hotel.id){
-                    value= this.hotel;
-                }
-                return value;
+            this._hotelService.updateHotel(this.selectHotel.id, this.selectHotel).subscribe((response: any) => {
+                this.hotels = this.hotels.map((value: Hotel) =>{
+                    if(value.id === this.hotel.id){
+                        value= this.hotel;
+                    }
+                    return value;
+                });
             });
             this._snackBar.open('Hotel updated', 'Okay',{
                 duration: 3000,
@@ -110,7 +93,6 @@ export class HotelComponent implements OnInit{
             this.hotels = this.hotels.map((value: Hotel) =>{
                 if(value.id === this.hotel.id){
                     value.name= this.selectHotel.name;
-                    value.description= this.selectHotel.description;
                     value.address= this.selectHotel.address;
                 }
                 return value;
@@ -128,9 +110,8 @@ export class HotelComponent implements OnInit{
         this.modifyHotelDrawer = true;
         this.hotel = hotel;
         this.selectHotel = {
-            id: null,
+            id: this.hotel.id,
             name: this.hotel.name,
-            description: this.hotel.description,
             address: this.hotel.address
         };
         console.log(this.selectHotel);
@@ -140,6 +121,7 @@ export class HotelComponent implements OnInit{
 
         const confirmDelete = window.confirm(`¿Are you sure to delete ${hotel.name}?`);
 
+        console.log(hotel);
         if(confirmDelete) {
             this.deleteHotel(hotel);
         }
@@ -151,7 +133,6 @@ export class HotelComponent implements OnInit{
         this.hotels = this.hotels.map((value: Hotel) =>{
             if(value.id === this.hotel.id){
                 value.name= this.selectHotel.name;
-                value.description= this.selectHotel.description;
                 value.address= this.selectHotel.address;
             }
             return value;

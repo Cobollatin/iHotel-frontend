@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Product} from '../model/product.service';
+import {Product} from '../model/product.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProductService} from '../services/product.service';
 import {Employee} from '../../employee/model/employee.service';
@@ -29,7 +29,9 @@ export class ProductComponent implements OnInit{
     getAllProduct(): void {
         this.productService.getAllProduct().subscribe((response: any) => {
             this.products = response;
+            console.log(response);
         });
+
     }
 
     addProduct(): any {
@@ -41,6 +43,7 @@ export class ProductComponent implements OnInit{
             this.productService.createProduct(this.newProduct).subscribe((response: any) => {
                 this.products.push({...response});
                 this.products = this.products.map((o: any) => o);
+                console.log(response);
             });
             this.newProduct = {} as Product;
         } else {

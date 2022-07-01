@@ -7,10 +7,6 @@
             <input *transloco="let t" matInput placeholder="{{ t('hotel-name-input') }}" [(ngModel)]="hotel.name">
         </mat-form-field>
         <mat-form-field class="ml-5 mt-5" appearance="outline">
-            <mat-label *transloco="let t"> {{ t('hotel-description-input') }}</mat-label>
-            <input *transloco="let t" matInput placeholder="{{ t('hotel-description-input') }}" [(ngModel)]="hotel.description">
-        </mat-form-field>
-        <mat-form-field class="ml-5 mt-5" appearance="outline">
             <mat-label *transloco="let t"> {{ t('hotel-address-input') }}</mat-label>
             <input *transloco="let t" matInput placeholder="{{ t('hotel-address-input') }}" [(ngModel)]="hotel.address">
         </mat-form-field>
@@ -25,10 +21,6 @@
             <input *transloco="let t" matInput placeholder="{{ t('hotel-name-input') }}" [(ngModel)]="hotel.name">
         </mat-form-field>
         <mat-form-field class="ml-5 mt-5" appearance="outline">
-            <mat-label *transloco="let t"> {{ t('hotel-description-input') }}</mat-label>
-            <input *transloco="let t" matInput placeholder="{{ t('hotel-description-input') }}" [(ngModel)]="hotel.description">
-        </mat-form-field>
-        <mat-form-field class="ml-5 mt-5" appearance="outline">
             <mat-label *transloco="let t"> {{ t('hotel-address-input') }}</mat-label>
             <input *transloco="let t" matInput placeholder="{{ t('hotel-address-input') }}" [(ngModel)]="hotel.address">
         </mat-form-field>
@@ -37,8 +29,6 @@
     <mat-card id="card-hotel" class="ml-30 mt-10 w-200" *ngFor="let hotel of hotels">
         <h3>{{ hotel.name }}</h3>
         <mat-list>
-            <h2 *transloco="let t">{{ t('hotel-description') }}</h2>
-            <p><i >{{ hotel.description }}</i></p>
             <h2 *transloco="let t">{{ t('hotel-address') }}</h2>
             <p><i>{{ hotel.address }}</i></p>
         </mat-list>
