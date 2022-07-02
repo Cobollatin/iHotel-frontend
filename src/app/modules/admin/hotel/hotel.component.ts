@@ -33,8 +33,8 @@ export class HotelComponent implements OnInit{
          if(this.hotel.name !== undefined && this.hotel.address !== undefined){
             this.numberHotels++;
             const hotel = {
-                businessId: 1,
-                administratorId: 1,
+                businessId: 6,
+                administratorId: 5,
                 name: this.hotel.name,
                 address: this.hotel.address
             };

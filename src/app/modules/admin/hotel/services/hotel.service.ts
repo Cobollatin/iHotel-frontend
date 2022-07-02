@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../../environments/environment';
-import { catchError, Observable, retry, throwError } from 'rxjs';
-import { Hotel } from '../Model/hotel';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../../../../environments/environment';
+import {catchError, Observable, retry, throwError} from "rxjs";
+import {Hotel} from '../Model/hotel';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class HotelService {
     basePath = environment.apiUrl + '/hotels';
@@ -13,7 +13,7 @@ export class HotelService {
         // eslint-disable-next-line @typescript-eslint/naming-convention
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
@@ -27,17 +27,13 @@ export class HotelService {
         return this.http.get<Hotel>(this.basePath, this.httpOptions);
     }
     createHotel(hotel: Hotel): Observable<Hotel> {
-        return this.http.post<Hotel>(this.basePath, {
-            ...hotel,
-            'businessId': '1',
-            'administratorId': '1',
-        }, this.httpOptions);
+      return this.http.post<Hotel>(this.basePath, JSON.stringify(hotel), this.httpOptions);
     }
     updateHotel(id: any, hotel: Hotel): any {
-        return this.http.put<Hotel>(`${this.basePath}/${id}`, JSON.stringify(hotel), this.httpOptions)
-            .pipe(
-                retry(2),
-                catchError(this.handleError));
+      return this.http.put<Hotel>(`${this.basePath}/${id}`, JSON.stringify(hotel), this.httpOptions)
+          .pipe(
+              retry(2),
+              catchError(this.handleError));
     }
 
     deleteHotel(id: any): any {
